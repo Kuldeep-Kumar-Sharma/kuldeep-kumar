@@ -15,15 +15,15 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "bootstrap": "^4.6.0",
     "gatsby": "^3.6.2",
     "gatsby-plugin-gatsby-cloud": "^2.7.1",
     "react": "^17.0.1",
+    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
-    "gatsby-plugin-postcss": "^4.7.1",
-    "postcss": "^8.3.5",
-    "tailwindcss": "^2.2.2"
+    "gatsby-plugin-postcss": "^4.7.1"
   }
 }
