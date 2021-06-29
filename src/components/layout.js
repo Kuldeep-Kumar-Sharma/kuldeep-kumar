@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import { Tab, Nav, Col, Row } from "react-bootstrap";
+import { Container, Card, Nav, Col, Row, Button } from "react-bootstrap";
+import { Wrapper } from "./styles.js";
 
 const Layout = ({ pageTitle, children }) => {
   const data = useStaticQuery(graphql`
@@ -14,32 +15,30 @@ const Layout = ({ pageTitle, children }) => {
   `);
 
   return (
-    <main>
-      <title>
-        {pageTitle} | {data.site.siteMetadata.title}
-      </title>
-      <Tab.Container id="left-tabs-example" defaultActiveKey="first">
-        <Row>
-          <Col sm={3}>
-            <Nav variant="pills" className="flex-column">
-              <Nav.Item>
-                <Nav.Link eventKey="first">Tab 1</Nav.Link>
-              </Nav.Item>
-              <Nav.Item>
-                <Nav.Link eventKey="second">Tab 2</Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-          <Col sm={9}>
-            <Tab.Content>
-              <Tab.Pane eventKey="first">{children}</Tab.Pane>
-              <Tab.Pane eventKey="second">Nothing</Tab.Pane>
-            </Tab.Content>
-          </Col>
-        </Row>
-      </Tab.Container>
-      <h1>{pageTitle}</h1>
-    </main>
+    <Wrapper>
+      {/* Stack the columns on mobile by making one full-width and the other half-width */}
+      <Row>
+        <Col xs={6} md={3} className="justify-content-md-center">
+          <Card style={{ width: "18rem" }}>
+            <Card.Img
+              variant="top"
+              src="https://avatars.githubusercontent.com/u/39633593?s=400&u=700c7cf01a90c7047c80d7a9640573ca8b05c320&v=4"
+            />
+            <Card.Body>
+              <Card.Title>Card Title</Card.Title>
+              <Card.Text>
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </Card.Text>
+              <Button variant="primary">Go somewhere</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        <Col className="background1" xs={12} md={9}>
+          xs=12 md=8
+        </Col>
+      </Row>
+    </Wrapper>
   );
 };
 
