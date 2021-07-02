@@ -24,9 +24,7 @@ const Layout = ({ pageTitle, children }) => {
             rounded
           />
         </Col>
-        <Col className="background1" xs={12} md={9}>
-          xs=12 md=8
-        </Col>
+        <Col className="background1" xs={12} md={9}></Col>
       </Row>
     </Wrapper>
   );
