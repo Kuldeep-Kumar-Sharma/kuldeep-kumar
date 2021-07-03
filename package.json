@@ -15,11 +15,10 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "bootstrap": "^4.6.0",
     "gatsby": "^3.6.2",
     "gatsby-plugin-gatsby-cloud": "^2.7.1",
+    "mdbreact": "^5.0.2",
     "react": "^17.0.1",
-    "react-bootstrap": "^1.6.1",
     "react-dom": "^17.0.1",
     "styled-components": "^5.3.0"
   },

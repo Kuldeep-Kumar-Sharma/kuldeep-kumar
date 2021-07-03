@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Link, useStaticQuery, graphql } from "gatsby";
-import { Container, Card, Nav, Image, Col, Row, Button } from "react-bootstrap";
+import { MDBContainer, MDBRow, MDBCol } from "mdb-react-ui-kit";
 import { Wrapper } from "./styles.js";
 
 const Layout = ({ pageTitle, children }) => {
@@ -16,7 +16,7 @@ const Layout = ({ pageTitle, children }) => {
 
   return (
     <Wrapper>
-      {/* Stack the columns on mobile by making one full-width and the other half-width */}
+      {/* Stack the columns on mobile by making one full-width and the other half-width
       <Row className="justify-content-md-center">
         <Col xs={6} md={3}>
           <Image
@@ -25,7 +25,20 @@ const Layout = ({ pageTitle, children }) => {
           />
         </Col>
         <Col className="background1" xs={12} md={9}></Col>
-      </Row>
+      </Row> */}
+      <MDBContainer>
+        <MDBRow>
+          <MDBCol size="md" className="col-example">
+            One of three columns
+          </MDBCol>
+          <MDBCol size="md" className="col-example">
+            One of three columns
+          </MDBCol>
+          <MDBCol size="md" className="col-example">
+            One of three columns
+          </MDBCol>
+        </MDBRow>
+      </MDBContainer>
     </Wrapper>
   );
 };
