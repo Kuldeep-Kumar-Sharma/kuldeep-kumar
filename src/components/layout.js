@@ -11,9 +11,7 @@ import {
 import "./layout.css";
 
 const Layout = ({ data }) => {
-  console.log(data);
   const { frontmatter, html } = data.allMarkdownRemark.edges[0].node;
-
   return (
     <MDBContainer fluid className="overflow-hidden">
       <MDBRow>
