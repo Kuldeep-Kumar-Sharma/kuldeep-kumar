@@ -1,5 +1,16 @@
 /* ./src/styles/global.css */
+
+html,
+body,
+#___gatsby {
+  height: 100%;
+}
+
 body {
+  margin: 0px;
   font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+#gatsby-focus-wrapper {
   height: 100%;
 }

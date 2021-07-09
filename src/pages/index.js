@@ -2,12 +2,12 @@ import * as React from "react";
 import { MDBBtn } from "mdb-react-ui-kit";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
+import Portfolio from "../components/Portfolio/portfolio";
 // markup
 const IndexPage = ({ data }) => {
-  console.log(data);
   return (
     <Layout data={data}>
-      <MDBBtn>Button</MDBBtn>
+      <Portfolio />
     </Layout>
   );
 };
@@ -23,6 +23,13 @@ export const pageQuery = graphql`
             name
             role
             date(formatString: "DD MMMM YYYY")
+            profileImage {
+              childImageSharp {
+                fluid(maxWidth: 800) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           html
         }

@@ -16,9 +16,12 @@
   },
   "dependencies": {
     "gatsby": "^3.6.2",
+    "gatsby-image": "^3.9.0",
     "gatsby-plugin-gatsby-cloud": "^2.7.1",
+    "gatsby-plugin-sharp": "^3.9.0",
     "gatsby-source-filesystem": "^3.8.0",
     "gatsby-transformer-remark": "^4.5.0",
+    "gatsby-transformer-sharp": "^3.9.0",
     "mdb-react-ui-kit": "^1.0.0-beta7",
     "mdbreact": "^5.0.2",
     "react": "^17.0.1",
