@@ -1,13 +1,14 @@
 import * as React from "react";
-import { MDBBtn } from "mdb-react-ui-kit";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Portfolio from "../components/Portfolio/portfolio";
+import Skills from "../components/Skills/skills";
 // markup
 const IndexPage = ({ data }) => {
   return (
     <Layout data={data}>
-      <Portfolio />
+      {/* <Skills /> */}
+      In Porgress
     </Layout>
   );
 };

@@ -10,13 +10,13 @@ import {
 import "./layout.css";
 
 const Layout = ({ data, children }) => {
-  const { frontmatter, html } = data.allMarkdownRemark.edges[0].node;
+  const { frontmatter } = data.allMarkdownRemark.edges[0].node;
   let profileImage = frontmatter.profileImage.childImageSharp.fluid;
 
   return (
-    <MDBContainer fluid className="overflow-hidden h-100">
-      <MDBRow className="overflow-hidden h-100">
-        <MDBCol md="4" lg="3" className="col-example BgNav h-100">
+    <MDBContainer fluid className="h-100">
+      <MDBRow className="h-100">
+        <MDBCol md="4" lg="3" className="overflow-hidden  BgNav h-100">
           <MDBRow className="d-flex justify-content-center">
             <MDBCol lg="8" md="8" className="gy-5 mb-4">
               <MDBRipple rippleTag="a">
@@ -42,10 +42,8 @@ const Layout = ({ data, children }) => {
             </MDBCol>
           </MDBRow>
         </MDBCol>
-        <MDBCol lg="9" md="8">
-          <MDBContainer fluid className="overflow-auto h-100">
-            {children}
-          </MDBContainer>
+        <MDBCol className="h-100 overflow-scroll" lg="9" md="8">
+          <MDBContainer className=" h-100">{children}</MDBContainer>
         </MDBCol>
       </MDBRow>
     </MDBContainer>

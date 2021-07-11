@@ -1,15 +1,5 @@
 import * as React from "react";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBCardText,
-  MDBBtn,
-  MDBTypography,
-  MDBRow,
-  MDBContainer,
-  MDBIcon,
-} from "mdb-react-ui-kit";
+import { MDBTypography, MDBRow } from "mdb-react-ui-kit";
 import "./portfolio.css";
 import { WorkHistory } from "./WorkHistory/workHistory";
 
@@ -58,23 +48,27 @@ export default function Portfolio() {
         }
       `}
       render={(data) => (
-        <MDBContainer overflow-scroll h-100>
-          <MDBRow overflow-scroll h-100>
-            <MDBTypography tag="h3" className="mb-0">
-              {data.markdownRemark.frontmatter.currentRole}
+        <MDBRow>
+          <figure className="mb-0 gy-4">
+            <MDBTypography blockquote>
+              <p> {data.markdownRemark.frontmatter.currentRole}</p>
             </MDBTypography>
-            <MDBTypography tag="small" className="text-muted">
-              {data.markdownRemark.frontmatter.currentEmployer}
-            </MDBTypography>
-            {workHistory(
-              data.markdownRemark.frontmatter.numberOfWorkHistory,
-              data.markdownRemark.frontmatter.discriptions,
-              data.markdownRemark.frontmatter.rolesPerformed,
-              data.markdownRemark.frontmatter.times,
-              data.markdownRemark.frontmatter.clients
-            )}
-          </MDBRow>
-        </MDBContainer>
+            <hr />
+            <figcaption className="blockquote-footer mb-0">
+              <cite title="Source Title">
+                {data.markdownRemark.frontmatter.currentEmployer}
+              </cite>
+            </figcaption>
+          </figure>
+
+          {workHistory(
+            data.markdownRemark.frontmatter.numberOfWorkHistory,
+            data.markdownRemark.frontmatter.discriptions,
+            data.markdownRemark.frontmatter.rolesPerformed,
+            data.markdownRemark.frontmatter.times,
+            data.markdownRemark.frontmatter.clients
+          )}
+        </MDBRow>
       )}
     />
   );

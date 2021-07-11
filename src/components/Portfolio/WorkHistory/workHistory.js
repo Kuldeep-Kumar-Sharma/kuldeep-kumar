@@ -3,7 +3,6 @@ import {
   MDBCard,
   MDBCardBody,
   MDBCardTitle,
-  MDBCardText,
   MDBBtn,
   MDBTypography,
   MDBRow,
@@ -13,11 +12,12 @@ import "./workHistory.css";
 
 export const WorkHistory = (props) => {
   return (
-    <MDBRow>
+    <MDBRow className="gy-2">
       <MDBBtn size="lg" floating>
         <MDBIcon fas icon="briefcase" />
       </MDBBtn>
-      <MDBCard className="w-75" shadow="0" border="primary" background="white">
+
+      <MDBCard className="w-75" background="white">
         <MDBCardBody>
           <MDBCardTitle>Client: {props.client}</MDBCardTitle>
 
