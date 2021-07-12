@@ -13,7 +13,6 @@ export default function Portfolio() {
     times,
     clients
   ) => {
-    console.log(numberOfWorkHistory);
     let workHistoryComponents = [];
     for (let i = 0; i < numberOfWorkHistory; i++) {
       workHistoryComponents.push(

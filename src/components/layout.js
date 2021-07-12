@@ -6,13 +6,30 @@ import {
   MDBTypography,
   MDBRipple,
   MDBBtn,
+  MDBIcon,
 } from "mdb-react-ui-kit";
 import "./layout.css";
 
-const Layout = ({ data, children }) => {
+const Layout = ({ data, switchComponent, children }) => {
   const { frontmatter } = data.allMarkdownRemark.edges[0].node;
   let profileImage = frontmatter.profileImage.childImageSharp.fluid;
 
+  const generateSocialLinks = (socialLinks, socialColours, socialIcons) => {
+    let socialButtonComponents = [];
+    for (let i = 0; i < socialLinks.length; i++) {
+      socialButtonComponents.push(
+        <MDBBtn
+          floating
+          className="m-1"
+          style={{ backgroundColor: socialColours[i] }}
+          href={socialLinks[i]}
+        >
+          <MDBIcon fab icon={socialIcons[i]} />
+        </MDBBtn>
+      );
+    }
+    return socialButtonComponents;
+  };
   return (
     <MDBContainer fluid className="h-100">
       <MDBRow className="h-100">
@@ -28,15 +45,51 @@ const Layout = ({ data, children }) => {
               </MDBRipple>
             </MDBCol>
             <figure className="text-center mb-0">
-              <MDBTypography variant="h5">{frontmatter.name}</MDBTypography>
+              <MDBTypography colorText="light" variant="h5">
+                {frontmatter.name}
+              </MDBTypography>
               <hr />
-              <MDBTypography variant="h6">{frontmatter.role}</MDBTypography>
+              <MDBTypography colorText="light" variant="h6">
+                {frontmatter.role}
+              </MDBTypography>
             </figure>
+            <MDBCol
+              lg="12"
+              md="12"
+              backgroundColor="light"
+              className="text-center text-lg-left"
+            >
+              <div
+                className="text-center p-3"
+                style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+              >
+                {generateSocialLinks(
+                  frontmatter.socialLinks,
+                  frontmatter.socialColours,
+                  frontmatter.socialIcons
+                )}
+              </div>
+            </MDBCol>
+
             <MDBCol lg="8" md="8" className="gy-3">
-              <MDBBtn block className="text-dark mx-2" color="info">
+              <MDBBtn
+                block
+                outline
+                rounded
+                color="light"
+                className="text-dark mx-2 Button"
+                onClick={switchComponent("PORTFOLIO")}
+              >
                 Portfolio
               </MDBBtn>
-              <MDBBtn block className="text-dark mx-2" color="secondary">
+              <MDBBtn
+                MDBBtn
+                block
+                rounded
+                color="light"
+                onClick={switchComponent("SKILLS")}
+                className="text-dark mx-2 Button"
+              >
                 CV
               </MDBBtn>
             </MDBCol>

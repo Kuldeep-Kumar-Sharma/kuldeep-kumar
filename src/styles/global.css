@@ -9,6 +9,7 @@ body,
 body {
   margin: 0px;
   font-family: Roboto, Helvetica, Arial, sans-serif;
+  color: "#fbfbfb";
 }
 
 #gatsby-focus-wrapper {

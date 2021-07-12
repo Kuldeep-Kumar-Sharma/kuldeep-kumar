@@ -5,10 +5,22 @@ import Portfolio from "../components/Portfolio/portfolio";
 import Skills from "../components/Skills/skills";
 // markup
 const IndexPage = ({ data }) => {
+  let routeName = <Portfolio />;
+  const switchComponent = (switchcomponent) => {
+    console.log(switchcomponent);
+    switch (switchcomponent) {
+      case "PORTFOLIO":
+        routeName = <Portfolio />;
+        break;
+      case "SKILLS":
+        routeName = <Skills />;
+        break;
+    }
+  };
   return (
-    <Layout data={data}>
-      {/* <Skills /> */}
-      In Porgress
+    <Layout data={data} switchComponent={switchComponent}>
+      {/* {routeName} */}
+      In Progress
     </Layout>
   );
 };
@@ -24,6 +36,9 @@ export const pageQuery = graphql`
             name
             role
             date(formatString: "DD MMMM YYYY")
+            socialLinks
+            socialIcons
+            socialColours
             profileImage {
               childImageSharp {
                 fluid(maxWidth: 800) {
