@@ -1,26 +1,28 @@
-import * as React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Portfolio from "../components/Portfolio/portfolio";
 import Skills from "../components/Skills/skills";
 // markup
 const IndexPage = ({ data }) => {
-  let routeName = <Portfolio />;
+  const [routeName, setRouteName] = useState(<Portfolio />);
   const switchComponent = (switchcomponent) => {
     console.log(switchcomponent);
     switch (switchcomponent) {
       case "PORTFOLIO":
-        routeName = <Portfolio />;
+        setRouteName(<Portfolio />);
         break;
       case "SKILLS":
-        routeName = <Skills />;
+        setRouteName(<Skills />);
         break;
+      default:
+        setRouteName(<Portfolio />);
     }
   };
   return (
-    <Layout data={data} switchComponent={switchComponent}>
-      {/* {routeName} */}
-      In Progress
+    <Layout data={data} switchCopt={switchComponent}>
+      {routeName}
+      {/* In Progress */}
     </Layout>
   );
 };

@@ -10,8 +10,8 @@ import {
 } from "mdb-react-ui-kit";
 import "./layout.css";
 
-const Layout = ({ data, switchComponent, children }) => {
-  const { frontmatter } = data.allMarkdownRemark.edges[0].node;
+const Layout = (props) => {
+  const { frontmatter } = props.data.allMarkdownRemark.edges[0].node;
   let profileImage = frontmatter.profileImage.childImageSharp.fluid;
 
   const generateSocialLinks = (socialLinks, socialColours, socialIcons) => {
@@ -20,6 +20,7 @@ const Layout = ({ data, switchComponent, children }) => {
       socialButtonComponents.push(
         <MDBBtn
           floating
+          key={i}
           className="m-1"
           style={{ backgroundColor: socialColours[i] }}
           href={socialLinks[i]}
@@ -78,7 +79,7 @@ const Layout = ({ data, switchComponent, children }) => {
                 rounded
                 color="light"
                 className="text-dark mx-2 Button"
-                onClick={switchComponent("PORTFOLIO")}
+                onClick={() => props.switchCopt("PORTFOLIO")}
               >
                 Portfolio
               </MDBBtn>
@@ -87,7 +88,8 @@ const Layout = ({ data, switchComponent, children }) => {
                 block
                 rounded
                 color="light"
-                onClick={switchComponent("SKILLS")}
+                type="button"
+                onClick={() => props.switchCopt("SKILLS")}
                 className="text-dark mx-2 Button"
               >
                 CV
@@ -96,7 +98,7 @@ const Layout = ({ data, switchComponent, children }) => {
           </MDBRow>
         </MDBCol>
         <MDBCol className="h-100 overflow-scroll" lg="9" md="8">
-          <MDBContainer className=" h-100">{children}</MDBContainer>
+          <MDBContainer className=" h-100">{props.children}</MDBContainer>
         </MDBCol>
       </MDBRow>
     </MDBContainer>
