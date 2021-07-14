@@ -21,8 +21,7 @@ const IndexPage = ({ data }) => {
   };
   return (
     <Layout data={data} switchCopt={switchComponent}>
-      {routeName}
-      {/* In Progress */}
+      {/* {routeName} */}
     </Layout>
   );
 };
