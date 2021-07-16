@@ -1,5 +1,5 @@
 import * as React from "react";
-import { MDBTypography, MDBRow } from "mdb-react-ui-kit";
+import { MDBTypography, MDBRow, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
 import "./portfolio.css";
 import { WorkHistory } from "./WorkHistory/workHistory";
 

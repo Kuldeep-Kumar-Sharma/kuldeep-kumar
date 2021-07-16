@@ -7,6 +7,11 @@ import {
   MDBRipple,
   MDBBtn,
   MDBIcon,
+  MDBDropdown,
+  MDBDropdownToggle,
+  MDBDropdownMenu,
+  MDBDropdownItem,
+  MDBDropdownLink,
 } from "mdb-react-ui-kit";
 import "./layout.css";
 
@@ -73,24 +78,38 @@ const Layout = (props) => {
             </MDBCol>
 
             <MDBCol lg="8" md="8" className="gy-3">
-              <MDBBtn
-                block
-                outline
-                rounded
-                color="light"
-                className="text-dark mx-2 Button"
-                onClick={() => props.switchCopt("PORTFOLIO")}
-              >
-                Portfolio
-              </MDBBtn>
+              <MDBDropdown animation color="light">
+                <MDBDropdownToggle
+                  block
+                  outline
+                  className="text-dark mx-2 Button"
+                  color="light"
+                  onClick={() => props.switchCopt("PORTFOLIO")}
+                >
+                  Portfolio
+                </MDBDropdownToggle>
+                <MDBDropdownMenu dark>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="#">Action</MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="#">Another action</MDBDropdownLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem>
+                    <MDBDropdownLink href="#">
+                      Something else here
+                    </MDBDropdownLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
+
               <MDBBtn
                 MDBBtn
                 block
-                rounded
                 color="light"
                 type="button"
                 onClick={() => props.switchCopt("SKILLS")}
-                className="text-dark mx-2 Button"
+                className="text-dark mx-2 gy-2 Button"
               >
                 CV
               </MDBBtn>
