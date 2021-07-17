@@ -1,11 +1,25 @@
-import * as React from "react";
-import { MDBTypography, MDBRow, MDBBtn, MDBIcon } from "mdb-react-ui-kit";
+import React, { useState } from "react";
+import {
+  MDBTypography,
+  MDBRow,
+  MDBBtn,
+  MDBIcon,
+  MDBNavbar,
+  MDBNavbarNav,
+  MDBNavbarItem,
+  MDBNavbarLink,
+  MDBNavbarToggler,
+  MDBContainer,
+  MDBCollapse,
+  MDBNavbarBrand,
+} from "mdb-react-ui-kit";
 import "./portfolio.css";
 import { WorkHistory } from "./WorkHistory/workHistory";
 
 import { StaticQuery, graphql } from "gatsby";
 
 export default function Portfolio() {
+  const [showBasic, setShowBasic] = useState(false);
   const workHistory = (
     numberOfWorkHistory,
     discriptions,
@@ -48,6 +62,33 @@ export default function Portfolio() {
       `}
       render={(data) => (
         <MDBRow>
+          <MDBNavbar expand="lg" light bgColor="light">
+            <MDBContainer fluid>
+              <MDBNavbarBrand href="#">Work History</MDBNavbarBrand>
+
+              <MDBNavbarToggler
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+                onClick={() => setShowBasic(!showBasic)}
+              >
+                <MDBIcon icon="bars" fas />
+              </MDBNavbarToggler>
+              <MDBCollapse navbar show={showBasic}>
+                <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
+                  <MDBNavbarItem>
+                    <MDBNavbarLink active aria-current="page" href="#">
+                      Work History
+                    </MDBNavbarLink>
+                  </MDBNavbarItem>
+                  <MDBNavbarItem>
+                    <MDBNavbarLink href="#">Link</MDBNavbarLink>
+                  </MDBNavbarItem>
+                </MDBNavbarNav>
+              </MDBCollapse>
+            </MDBContainer>
+          </MDBNavbar>
+
           <figure className="mb-0 gy-4">
             <MDBTypography blockquote>
               <p> {data.markdownRemark.frontmatter.currentRole}</p>

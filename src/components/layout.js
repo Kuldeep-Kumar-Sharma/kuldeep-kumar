@@ -82,7 +82,7 @@ const Layout = (props) => {
                 <MDBDropdownToggle
                   block
                   outline
-                  className="text-dark mx-2 Button"
+                  className="text-dark mx-2"
                   color="light"
                   onClick={() => props.switchCopt("PORTFOLIO")}
                 >
@@ -109,7 +109,7 @@ const Layout = (props) => {
                 color="light"
                 type="button"
                 onClick={() => props.switchCopt("SKILLS")}
-                className="text-dark mx-2 gy-2 Button"
+                className="text-dark mx-2 my-2"
               >
                 CV
               </MDBBtn>
