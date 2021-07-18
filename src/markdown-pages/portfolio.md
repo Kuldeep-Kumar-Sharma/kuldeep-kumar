@@ -6,7 +6,7 @@ clients:
   [
     "Largest Railway Client of Belgium",
     "Largest Airline Client of Netherlands Onsite",
-    "TCS HR Internal",
+    "TCS Internal",
   ]
 times:
   [

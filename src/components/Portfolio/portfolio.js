@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import {
   MDBTypography,
   MDBRow,
-  MDBBtn,
   MDBIcon,
   MDBNavbar,
   MDBNavbarNav,
@@ -14,8 +13,12 @@ import {
   MDBNavbarBrand,
 } from "mdb-react-ui-kit";
 import "./portfolio.css";
-import { WorkHistory } from "./WorkHistory/workHistory";
-
+import { WorkHistory } from "./WorkHistory";
+import { Achievements } from "./Achievements";
+import { Courses } from "./Courses";
+import { Education } from "./Education";
+import { Hobbies } from "./Hobbies";
+import { Skills } from "./Skills";
 import { StaticQuery, graphql } from "gatsby";
 
 export default function Portfolio() {
@@ -45,7 +48,7 @@ export default function Portfolio() {
     <StaticQuery
       query={graphql`
         query {
-          markdownRemark(fileAbsolutePath: { regex: "/workHistory/" }) {
+          markdownRemark(fileAbsolutePath: { regex: "/portfolio/" }) {
             html
             frontmatter {
               clients
@@ -61,54 +64,77 @@ export default function Portfolio() {
         }
       `}
       render={(data) => (
-        <MDBRow>
-          <MDBNavbar expand="lg" light bgColor="light">
-            <MDBContainer fluid>
-              <MDBNavbarBrand href="#">Work History</MDBNavbarBrand>
+        <MDBContainer fluid>
+          <MDBRow>
+            <MDBNavbar expand="lg" dark bgColor="primary">
+              <MDBContainer fluid>
+                <MDBNavbarBrand href="#">Work History</MDBNavbarBrand>
 
-              <MDBNavbarToggler
-                aria-controls="navbarSupportedContent"
-                aria-expanded="false"
-                aria-label="Toggle navigation"
-                onClick={() => setShowBasic(!showBasic)}
-              >
-                <MDBIcon icon="bars" fas />
-              </MDBNavbarToggler>
-              <MDBCollapse navbar show={showBasic}>
-                <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
-                  <MDBNavbarItem>
-                    <MDBNavbarLink active aria-current="page" href="#">
-                      Work History
-                    </MDBNavbarLink>
-                  </MDBNavbarItem>
-                  <MDBNavbarItem>
-                    <MDBNavbarLink href="#">Link</MDBNavbarLink>
-                  </MDBNavbarItem>
-                </MDBNavbarNav>
-              </MDBCollapse>
-            </MDBContainer>
-          </MDBNavbar>
+                <MDBNavbarToggler
+                  aria-controls="navbarSupportedContent"
+                  aria-expanded="false"
+                  aria-label="Toggle navigation"
+                  onClick={() => setShowBasic(!showBasic)}
+                >
+                  <MDBIcon icon="bars" fas />
+                </MDBNavbarToggler>
+                <MDBCollapse navbar show={showBasic}>
+                  <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
+                    <MDBNavbarItem>
+                      <MDBNavbarLink aria-current="page" href="#">
+                        Work History
+                      </MDBNavbarLink>
+                    </MDBNavbarItem>
+                    <MDBNavbarItem>
+                      <MDBNavbarLink aria-current="page" href="#">
+                        Skills
+                      </MDBNavbarLink>
+                    </MDBNavbarItem>
+                    <MDBNavbarItem>
+                      <MDBNavbarLink aria-current="page" href="#">
+                        Achievement
+                      </MDBNavbarLink>
+                    </MDBNavbarItem>
+                    <MDBNavbarItem>
+                      <MDBNavbarLink aria-current="page" href="#">
+                        Courses
+                      </MDBNavbarLink>
+                    </MDBNavbarItem>
+                    <MDBNavbarItem>
+                      <MDBNavbarLink aria-current="page" href="#">
+                        Languages
+                      </MDBNavbarLink>
+                    </MDBNavbarItem>
+                  </MDBNavbarNav>
+                </MDBCollapse>
+              </MDBContainer>
+            </MDBNavbar>
 
-          <figure className="mb-0 gy-4">
-            <MDBTypography blockquote>
-              <p> {data.markdownRemark.frontmatter.currentRole}</p>
-            </MDBTypography>
-            <hr />
-            <figcaption className="blockquote-footer mb-0">
-              <cite title="Source Title">
-                {data.markdownRemark.frontmatter.currentEmployer}
-              </cite>
-            </figcaption>
-          </figure>
-
-          {workHistory(
-            data.markdownRemark.frontmatter.numberOfWorkHistory,
-            data.markdownRemark.frontmatter.discriptions,
-            data.markdownRemark.frontmatter.rolesPerformed,
-            data.markdownRemark.frontmatter.times,
-            data.markdownRemark.frontmatter.clients
-          )}
-        </MDBRow>
+            <figure className="mb-0 gy-4">
+              <MDBTypography blockquote>
+                <p> {data.markdownRemark.frontmatter.currentRole}</p>
+              </MDBTypography>
+              <hr />
+              <figcaption className="blockquote-footer mb-0">
+                <cite title="Source Title">
+                  {data.markdownRemark.frontmatter.currentEmployer}
+                </cite>
+              </figcaption>
+            </figure>
+            <Achievements />
+            <Courses />
+            <Education />
+            <Hobbies />
+            <Skills />
+            {workHistory(
+              data.markdownRemark.frontmatter.numberOfWorkHistory,
+              data.markdownRemark.frontmatter.discriptions,
+              data.markdownRemark.frontmatter.rolesPerformed,
+              data.markdownRemark.frontmatter.times,
+              data.markdownRemark.frontmatter.clients
+            )}
+          </MDBRow>
+        </MDBContainer>
       )}
     />
   );
