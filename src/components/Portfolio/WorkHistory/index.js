@@ -8,7 +8,6 @@ import {
   MDBRow,
   MDBIcon,
 } from "mdb-react-ui-kit";
-import "./workHistory.css";
 
 export const WorkHistory = (props) => {
   return (
@@ -17,7 +16,7 @@ export const WorkHistory = (props) => {
         <MDBIcon fas icon="briefcase" />
       </MDBBtn>
 
-      <MDBCard className="w-75" background="white">
+      <MDBCard className="w-75 px-4" background="white">
         <MDBCardBody>
           <MDBCardTitle>Client: {props.client}</MDBCardTitle>
 

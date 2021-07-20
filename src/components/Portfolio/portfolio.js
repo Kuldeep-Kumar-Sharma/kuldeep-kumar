@@ -66,9 +66,9 @@ export default function Portfolio() {
       render={(data) => (
         <MDBContainer fluid>
           <MDBRow>
-            <MDBNavbar expand="lg" dark bgColor="primary">
+            <MDBNavbar expand="lg" dark bgColor="primary" sticky>
               <MDBContainer fluid>
-                <MDBNavbarBrand href="#">Work History</MDBNavbarBrand>
+                <MDBNavbarBrand href="#">Portfolio</MDBNavbarBrand>
 
                 <MDBNavbarToggler
                   aria-controls="navbarSupportedContent"
@@ -86,22 +86,32 @@ export default function Portfolio() {
                       </MDBNavbarLink>
                     </MDBNavbarItem>
                     <MDBNavbarItem>
-                      <MDBNavbarLink aria-current="page" href="#">
+                      <MDBNavbarLink active aria-current="page" href="#skills">
                         Skills
                       </MDBNavbarLink>
                     </MDBNavbarItem>
                     <MDBNavbarItem>
-                      <MDBNavbarLink aria-current="page" href="#">
-                        Achievement
+                      <MDBNavbarLink aria-current="page" href="#achievements">
+                        Achievements
                       </MDBNavbarLink>
                     </MDBNavbarItem>
                     <MDBNavbarItem>
-                      <MDBNavbarLink aria-current="page" href="#">
+                      <MDBNavbarLink aria-current="page" href="#courses">
                         Courses
                       </MDBNavbarLink>
                     </MDBNavbarItem>
                     <MDBNavbarItem>
+                      <MDBNavbarLink aria-current="page" href="#education">
+                        Education
+                      </MDBNavbarLink>
+                    </MDBNavbarItem>
+                    <MDBNavbarItem>
                       <MDBNavbarLink aria-current="page" href="#">
+                        Hobbies
+                      </MDBNavbarLink>
+                    </MDBNavbarItem>
+                    <MDBNavbarItem>
+                      <MDBNavbarLink aria-current="page" href="#hobbies">
                         Languages
                       </MDBNavbarLink>
                     </MDBNavbarItem>
@@ -121,11 +131,6 @@ export default function Portfolio() {
                 </cite>
               </figcaption>
             </figure>
-            <Achievements />
-            <Courses />
-            <Education />
-            <Hobbies />
-            <Skills />
             {workHistory(
               data.markdownRemark.frontmatter.numberOfWorkHistory,
               data.markdownRemark.frontmatter.discriptions,
@@ -133,6 +138,21 @@ export default function Portfolio() {
               data.markdownRemark.frontmatter.times,
               data.markdownRemark.frontmatter.clients
             )}
+            <section id="skills">
+              <Skills />
+            </section>
+            <section id="achievements">
+              <Achievements />
+            </section>
+            <section id="courses">
+              <Courses />
+            </section>
+            <section id="education">
+              <Education />
+            </section>
+            <section id="hobbies">
+              <Hobbies />
+            </section>
           </MDBRow>
         </MDBContainer>
       )}

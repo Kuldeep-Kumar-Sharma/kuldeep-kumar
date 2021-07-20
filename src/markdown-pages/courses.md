@@ -1,6 +1,5 @@
 ---
 title: "Courses"
-image: "../images/certificate.png"
 list:
   [
     "Microsoft Certified: Azure Fundamentals And Data Fundamentals",

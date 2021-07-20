@@ -1,10 +1,9 @@
 import * as React from "react";
 import { MDBTypography, MDBRow } from "mdb-react-ui-kit";
 import { Skill } from "./Skill/skill";
-
 import { StaticQuery, graphql } from "gatsby";
 
-export default function Skills() {
+export const Skills = () => {
   const skills = (groups, groupImages, skills) => {
     let skillComponents = [];
     for (let i = 0; i < groups.length; i++) {
@@ -56,4 +55,4 @@ export default function Skills() {
       )}
     />
   );
-}
+};

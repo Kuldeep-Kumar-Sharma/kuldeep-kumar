@@ -1,6 +1,5 @@
 ---
 title: "Achievements"
-image: "../images/achievement.png"
 list:
   [
     "Active participation in Corporate Social Responsibility.",

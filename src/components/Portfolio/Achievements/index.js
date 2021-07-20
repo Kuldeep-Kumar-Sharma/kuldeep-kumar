@@ -1,6 +1,15 @@
 import * as React from "react";
-import { MDBTypography, MDBRow } from "mdb-react-ui-kit";
-import { ListCard } from "../../UI/ListCard";
+import {
+  MDBTypography,
+  MDBRow,
+  MDBCard,
+  MDBListGroup,
+  MDBCol,
+  MDBCardBody,
+  MDBListGroupItem,
+  MDBIcon,
+  MDBBadge,
+} from "mdb-react-ui-kit";
 import { StaticQuery, graphql } from "gatsby";
 
 export const Achievements = () => {
@@ -12,13 +21,6 @@ export const Achievements = () => {
             frontmatter {
               title
               list
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 800) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
             }
           }
         }
@@ -31,13 +33,27 @@ export const Achievements = () => {
             </MDBTypography>
           </figure>
 
-          <ListCard
-            title={data.markdownRemark.frontmatter.title}
-            list={data.markdownRemark.frontmatter.list}
-            image={
-              data.markdownRemark.frontmatter.image.childImageSharp.fluid.src
-            }
-          />
+          <MDBRow className="gy-2">
+            <MDBCard className="w-100 px-4">
+              <MDBRow className="g-0 px-4">
+                <MDBCol md="9">
+                  <MDBCardBody>
+                    <MDBListGroup flush>
+                      {data.markdownRemark.frontmatter.list.map((item) => (
+                        <MDBListGroupItem>
+                          <MDBBadge className="ms-2" color="primary">
+                            {" "}
+                            <MDBIcon fas icon="trophy" />
+                          </MDBBadge>{" "}
+                          {item}
+                        </MDBListGroupItem>
+                      ))}
+                    </MDBListGroup>
+                  </MDBCardBody>
+                </MDBCol>
+              </MDBRow>
+            </MDBCard>
+          </MDBRow>
         </MDBRow>
       )}
     />
