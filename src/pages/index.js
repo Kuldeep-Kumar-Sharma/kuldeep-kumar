@@ -13,7 +13,7 @@ const IndexPage = ({ data }) => {
         setRouteName(<Portfolio />);
         break;
       case "SKILLS":
-        setRouteName(<Skills />);
+        setRouteName();
         break;
       default:
         setRouteName(<Portfolio />);
