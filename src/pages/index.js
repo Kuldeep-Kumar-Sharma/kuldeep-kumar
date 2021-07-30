@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Portfolio from "../components/Portfolio/portfolio";
-import Skills from "../components/Portfolio/Skills";
 // markup
 const IndexPage = ({ data }) => {
   const [routeName, setRouteName] = useState(<Portfolio />);

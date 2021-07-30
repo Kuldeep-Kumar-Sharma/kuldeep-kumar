@@ -2,15 +2,12 @@ import React, { useState } from "react";
 import {
   MDBTypography,
   MDBRow,
-  MDBIcon,
-  MDBNavbar,
-  MDBNavbarNav,
-  MDBNavbarItem,
-  MDBNavbarLink,
-  MDBNavbarToggler,
   MDBContainer,
-  MDBCollapse,
-  MDBNavbarBrand,
+  MDBTabs,
+  MDBTabsItem,
+  MDBTabsLink,
+  MDBTabsContent,
+  MDBTabsPane,
 } from "mdb-react-ui-kit";
 import "./portfolio.css";
 import { WorkHistory } from "./WorkHistory";
@@ -22,7 +19,6 @@ import { Skills } from "./Skills";
 import { StaticQuery, graphql } from "gatsby";
 
 export default function Portfolio() {
-  const [showBasic, setShowBasic] = useState(false);
   const workHistory = (
     numberOfWorkHistory,
     discriptions,
@@ -44,6 +40,17 @@ export default function Portfolio() {
     return workHistoryComponents;
   };
 
+  const [fillActive, setFillActive] = useState('tab1');
+
+  const handleFillClick = (value) => {
+    if (value === fillActive) {
+      return;
+    }
+
+    setFillActive(value);
+  };
+
+
   return (
     <StaticQuery
       query={graphql`
@@ -63,64 +70,55 @@ export default function Portfolio() {
           }
         }
       `}
+
+      
       render={(data) => (
         <MDBContainer fluid>
           <MDBRow>
-            <MDBNavbar expand="lg" dark bgColor="primary" sticky>
-              <MDBContainer fluid>
-                <MDBNavbarBrand href="#">Portfolio</MDBNavbarBrand>
 
-                <MDBNavbarToggler
-                  aria-controls="navbarSupportedContent"
-                  aria-expanded="false"
-                  aria-label="Toggle navigation"
-                  onClick={() => setShowBasic(!showBasic)}
-                >
-                  <MDBIcon icon="bars" fas />
-                </MDBNavbarToggler>
-                <MDBCollapse navbar show={showBasic}>
-                  <MDBNavbarNav className="mr-auto mb-2 mb-lg-0">
-                    <MDBNavbarItem>
-                      <MDBNavbarLink aria-current="page" href="#">
-                        Work History
-                      </MDBNavbarLink>
-                    </MDBNavbarItem>
-                    <MDBNavbarItem>
-                      <MDBNavbarLink active aria-current="page" href="#skills">
-                        Skills
-                      </MDBNavbarLink>
-                    </MDBNavbarItem>
-                    <MDBNavbarItem>
-                      <MDBNavbarLink aria-current="page" href="#achievements">
-                        Achievements
-                      </MDBNavbarLink>
-                    </MDBNavbarItem>
-                    <MDBNavbarItem>
-                      <MDBNavbarLink aria-current="page" href="#courses">
-                        Courses
-                      </MDBNavbarLink>
-                    </MDBNavbarItem>
-                    <MDBNavbarItem>
-                      <MDBNavbarLink aria-current="page" href="#education">
-                        Education
-                      </MDBNavbarLink>
-                    </MDBNavbarItem>
-                    <MDBNavbarItem>
-                      <MDBNavbarLink aria-current="page" href="#">
-                        Hobbies
-                      </MDBNavbarLink>
-                    </MDBNavbarItem>
-                    <MDBNavbarItem>
-                      <MDBNavbarLink aria-current="page" href="#hobbies">
-                        Languages
-                      </MDBNavbarLink>
-                    </MDBNavbarItem>
-                  </MDBNavbarNav>
-                </MDBCollapse>
-              </MDBContainer>
-            </MDBNavbar>
 
-            <figure className="mb-0 gy-4">
+  
+      <MDBTabs fill className='mb-3'>
+        <MDBTabsItem>
+          <MDBTabsLink active onClick={() => handleFillClick('WorkHistory')} active={fillActive === 'WorkHistory'}>
+            Work History
+          </MDBTabsLink>
+        </MDBTabsItem>
+         <MDBTabsItem>
+        <MDBTabsLink onClick={() => handleFillClick('Skills')} active={fillActive === 'Skills'}>
+            Skills
+          </MDBTabsLink>
+          </MDBTabsItem>
+           <MDBTabsItem>
+           <MDBTabsLink onClick={() => handleFillClick('Achievements')} active={fillActive === 'Achievements'}>
+            Achievements
+          </MDBTabsLink>
+          </MDBTabsItem>
+           <MDBTabsItem>
+           <MDBTabsLink onClick={() => handleFillClick('Courses')} active={fillActive === 'Courses'}>
+            Courses
+          </MDBTabsLink>
+          </MDBTabsItem>
+          <MDBTabsItem>
+          <MDBTabsLink onClick={() => handleFillClick('Education')} active={fillActive === 'Education'}>
+            Education
+          </MDBTabsLink>
+          </MDBTabsItem>
+          <MDBTabsItem>
+          <MDBTabsLink onClick={() => handleFillClick('Hobbies')} active={fillActive === 'Hobbies'}>
+            Hobbies
+          </MDBTabsLink>
+          </MDBTabsItem>
+           <MDBTabsItem>
+          <MDBTabsLink onClick={() => handleFillClick('Languages')} active={fillActive === 'Languages'}>
+            Languages
+          </MDBTabsLink>
+          </MDBTabsItem>
+      </MDBTabs>
+
+      <MDBTabsContent>
+        <MDBTabsPane show={fillActive === 'WorkHistory'}>
+           <figure className="mb-0 gy-4">
               <MDBTypography blockquote>
                 <p> {data.markdownRemark.frontmatter.currentRole}</p>
               </MDBTypography>
@@ -138,21 +136,15 @@ export default function Portfolio() {
               data.markdownRemark.frontmatter.times,
               data.markdownRemark.frontmatter.clients
             )}
-            <section id="skills">
-              <Skills />
-            </section>
-            <section id="achievements">
-              <Achievements />
-            </section>
-            <section id="courses">
-              <Courses />
-            </section>
-            <section id="education">
-              <Education />
-            </section>
-            <section id="hobbies">
-              <Hobbies />
-            </section>
+        </MDBTabsPane>
+        <MDBTabsPane show={fillActive === 'Skills'}><Skills /></MDBTabsPane>
+        <MDBTabsPane show={fillActive === 'Achievements'}><Achievements /></MDBTabsPane>
+        <MDBTabsPane show={fillActive === 'Courses'}><Courses /></MDBTabsPane>
+        <MDBTabsPane show={fillActive === 'Education'}><Education /></MDBTabsPane>
+        <MDBTabsPane show={fillActive === 'Hobbies'}><Hobbies /></MDBTabsPane>
+        <MDBTabsPane show={fillActive === 'Languages'}>Tab 1 content</MDBTabsPane>
+      </MDBTabsContent>
+
           </MDBRow>
         </MDBContainer>
       )}

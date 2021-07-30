@@ -1,23 +1,20 @@
 import * as React from "react";
-import { MDBTypography, MDBRow } from "mdb-react-ui-kit";
-import { Skill } from "./Skill/skill";
+import { MDBTypography, MDBRow,MDBBadge,MDBIcon,MDBListGroupItem } from "mdb-react-ui-kit";
 import { StaticQuery, graphql } from "gatsby";
 
 export const Skills = () => {
-  const skills = (groups, groupImages, skills) => {
-    let skillComponents = [];
-    for (let i = 0; i < groups.length; i++) {
-      skillComponents.push(
-        <Skill
-          group={groups[i]}
-          groupImage={groupImages[i]}
-          skills={skills[i]}
-        />
-      );
-    }
-    return skillComponents;
+  const skills = (groups,skills) =>{
+      const listSkills = [];
+      for(let i = 0;i < groups.length;i++){
+        listSkills.push(
+              <MDBListGroupItem>
+                {" "}<MDBIcon color="primary" fas icon="code" />{" "}
+                {groups[i]}{" "}<br/>
+                {skills[i].map((skill) => (<MDBBadge className="ms-2">{skill}</MDBBadge>))}
+              </MDBListGroupItem>);
+      }
+     return listSkills;
   };
-
   return (
     <StaticQuery
       query={graphql`
@@ -27,13 +24,6 @@ export const Skills = () => {
               skills
               groups
               pageName
-              groupImages {
-                childImageSharp {
-                  fluid(maxWidth: 800) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
             }
           }
         }
@@ -45,12 +35,9 @@ export const Skills = () => {
               <p> {data.markdownRemark.frontmatter.pageName}</p>
             </MDBTypography>
           </figure>
-
-          {skills(
-            data.markdownRemark.frontmatter.groups,
-            data.markdownRemark.frontmatter.groupImages,
-            data.markdownRemark.frontmatter.skills
-          )}
+          <MDBRow className="gy-2">
+            {skills(data.markdownRemark.frontmatter.groups,data.markdownRemark.frontmatter.skills)}
+          </MDBRow>          
         </MDBRow>
       )}
     />

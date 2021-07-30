@@ -1,6 +1,5 @@
 import * as React from "react";
 import { MDBTypography, MDBRow } from "mdb-react-ui-kit";
-import { ListCard } from "../../UI/ListCard";
 import { StaticQuery, graphql } from "gatsby";
 
 export const Education = () => {
@@ -30,14 +29,14 @@ export const Education = () => {
               <p> {data.markdownRemark.frontmatter.title}</p>
             </MDBTypography>
           </figure>
-
-          <ListCard
-            title={data.markdownRemark.frontmatter.title}
-            list={data.markdownRemark.frontmatter.list}
-            image={
-              data.markdownRemark.frontmatter.image.childImageSharp.fluid.src
-            }
-          />
+          {data.markdownRemark.frontmatter.list.map(item=>{
+            let lines = item.split(".");
+            return lines.map(words=>(
+              <MDBTypography className='lead mb-0'>
+                <p  className="text-sm-start"> {words}</p>
+                <hr/>
+              </MDBTypography>))}
+           )}
         </MDBRow>
       )}
     />

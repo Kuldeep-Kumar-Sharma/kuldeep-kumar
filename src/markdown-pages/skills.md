@@ -1,8 +1,6 @@
 ---
 pageName: "Skills"
 groups: ["Frontend", "Backend", "DevOps"]
-groupImages:
-  ["../images/front-end.png", "../images/back-end.png", "../images/devops.png"]
 skills: [
     [
       "HTML5",
