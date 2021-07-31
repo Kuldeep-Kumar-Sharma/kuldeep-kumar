@@ -87,7 +87,7 @@ const Layout = (props) => {
                 block
                 color="light"
                 type="button"
-                onClick={() => props.switchCopt("SKILLS")}
+                onClick={() => props.switchCopt("C.V")}
                 className="text-dark mx-2 my-2"
               >
                 CV

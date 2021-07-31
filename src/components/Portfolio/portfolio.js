@@ -19,34 +19,12 @@ import { Skills } from "./Skills";
 import { StaticQuery, graphql } from "gatsby";
 
 export default function Portfolio() {
-  const workHistory = (
-    numberOfWorkHistory,
-    discriptions,
-    rolesPerformed,
-    times,
-    clients
-  ) => {
-    let workHistoryComponents = [];
-    for (let i = 0; i < numberOfWorkHistory; i++) {
-      workHistoryComponents.push(
-        <WorkHistory
-          discription={discriptions[i]}
-          rolePerformed={rolesPerformed[i]}
-          time={times[i]}
-          client={clients[i]}
-        />
-      );
-    }
-    return workHistoryComponents;
-  };
-
   const [fillActive, setFillActive] = useState('tab1');
 
   const handleFillClick = (value) => {
     if (value === fillActive) {
       return;
     }
-
     setFillActive(value);
   };
 
@@ -129,13 +107,13 @@ export default function Portfolio() {
                 </cite>
               </figcaption>
             </figure>
-            {workHistory(
-              data.markdownRemark.frontmatter.numberOfWorkHistory,
-              data.markdownRemark.frontmatter.discriptions,
-              data.markdownRemark.frontmatter.rolesPerformed,
-              data.markdownRemark.frontmatter.times,
-              data.markdownRemark.frontmatter.clients
-            )}
+            <WorkHistory 
+              discription={data.markdownRemark.frontmatter.discriptions}
+              rolePerformed={data.markdownRemark.frontmatter.rolesPerformed}
+              time={data.markdownRemark.frontmatter.times}
+              client={data.markdownRemark.frontmatter.clients}
+              numberOfWorkHistory={data.markdownRemark.frontmatter.numberOfWorkHistory}
+            />
         </MDBTabsPane>
         <MDBTabsPane show={fillActive === 'Skills'}><Skills /></MDBTabsPane>
         <MDBTabsPane show={fillActive === 'Achievements'}><Achievements /></MDBTabsPane>

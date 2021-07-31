@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import Portfolio from "../components/Portfolio/portfolio";
+import CV from "../components/C.V";
 // markup
 const IndexPage = ({ data }) => {
   const [routeName, setRouteName] = useState(<Portfolio />);
@@ -11,8 +12,8 @@ const IndexPage = ({ data }) => {
       case "PORTFOLIO":
         setRouteName(<Portfolio />);
         break;
-      case "SKILLS":
-        setRouteName();
+      case "C.V":
+        setRouteName(<CV/>);
         break;
       default:
         setRouteName(<Portfolio />);

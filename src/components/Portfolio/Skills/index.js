@@ -8,8 +8,7 @@ export const Skills = () => {
       for(let i = 0;i < groups.length;i++){
         listSkills.push(
               <MDBListGroupItem>
-                {" "}<MDBIcon color="primary" fas icon="code" />{" "}
-                {groups[i]}{" "}<br/>
+                <p className="fw-bold"><MDBIcon color="primary" fas icon="code" />{" "}{groups[i]}{" "}</p>
                 {skills[i].map((skill) => (<MDBBadge className="ms-2">{skill}</MDBBadge>))}
               </MDBListGroupItem>);
       }

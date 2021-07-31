@@ -1,49 +1,26 @@
 import * as React from "react";
-import {
-  MDBCard,
-  MDBCardBody,
-  MDBCardTitle,
-  MDBBtn,
-  MDBTypography,
-  MDBRow,
-  MDBIcon,
-} from "mdb-react-ui-kit";
+import {MDBListGroup,MDBRow,MDBIcon,MDBListGroupItem} from "mdb-react-ui-kit";
 
 export const WorkHistory = (props) => {
+  const items = (client,time,rolePerformed,discription,numberOfWorkHistory)=>{
+    let workHistoryList = [];
+      for(let i = 0;i < numberOfWorkHistory;i++){
+          workHistoryList.push(
+          <MDBListGroupItem>
+            <p className="fw-bold">{" "}<MDBIcon fas icon="briefcase" color="primary" />{" "}{client[i]}</p>
+            <p className="fw-normal">{time[i]}</p>
+            <p className="fst-normal">{rolePerformed[i]}</p>
+            <p className="fw-lighter">{discription[i]}</p>
+          </MDBListGroupItem>);
+        }
+      return workHistoryList;
+  };
+
   return (
     <MDBRow className="gy-2">
-      <MDBBtn size="lg" floating>
-        <MDBIcon fas icon="briefcase" />
-      </MDBBtn>
-
-      <MDBCard className="w-75 px-4" background="white">
-        <MDBCardBody>
-          <MDBCardTitle>Client: {props.client}</MDBCardTitle>
-
-          <table className="table">
-            <tbody>
-              <tr>
-                <td>Time</td>
-                <td>
-                  <MDBTypography tag="h6"> {props.time}</MDBTypography>
-                </td>
-              </tr>
-              <tr>
-                <td>Roles </td>
-                <td>
-                  <MDBTypography tag="h6"> {props.rolePerformed}</MDBTypography>
-                </td>
-              </tr>
-              <tr>
-                <td>Discription</td>
-                <td>
-                  <MDBTypography tag="h6"> {props.discription}</MDBTypography>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </MDBCardBody>
-      </MDBCard>
+      <MDBListGroup flush>
+      {items(props.client,props.time,props.rolePerformed,props.discription,props.numberOfWorkHistory)}
+      </MDBListGroup>  
     </MDBRow>
   );
 };
