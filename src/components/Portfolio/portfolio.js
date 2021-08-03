@@ -53,12 +53,9 @@ export default function Portfolio() {
       render={(data) => (
         <MDBContainer fluid>
           <MDBRow>
-
-
-  
       <MDBTabs fill className='mb-3'>
         <MDBTabsItem>
-          <MDBTabsLink active onClick={() => handleFillClick('WorkHistory')} active={fillActive === 'WorkHistory'}>
+          <MDBTabsLink onClick={() => handleFillClick('WorkHistory')} active={fillActive === 'WorkHistory'}>
             Work History
           </MDBTabsLink>
         </MDBTabsItem>

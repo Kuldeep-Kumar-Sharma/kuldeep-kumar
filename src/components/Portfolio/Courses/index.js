@@ -2,10 +2,6 @@ import * as React from "react";
 import {
   MDBTypography,
   MDBRow,
-  MDBCard,
-  MDBListGroup,
-  MDBCol,
-  MDBCardBody,
   MDBListGroupItem,
   MDBIcon,
 } from "mdb-react-ui-kit";
