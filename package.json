@@ -25,8 +25,7 @@
     "mdb-react-ui-kit": "^1.0.0-beta7",
     "mdbreact": "^5.0.2",
     "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-pdf": "^5.3.2"
+    "react-dom": "^17.0.1"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",

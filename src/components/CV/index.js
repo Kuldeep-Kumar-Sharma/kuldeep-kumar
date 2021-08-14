@@ -2,41 +2,48 @@ import * as React from "react";
 import {
   MDBTypography,
   MDBRow,
-  MDBListGroupItem,
-  MDBIcon,
+  MDBRipple,
 } from "mdb-react-ui-kit";
 import { StaticQuery, graphql } from "gatsby";
 
-export const Achievements = () => {
+const CV = () => {
   return (
     <StaticQuery
       query={graphql`
         query {
-          markdownRemark(fileAbsolutePath: { regex: "/achievements/" }) {
+          markdownRemark(fileAbsolutePath: { regex: "/resume/" }) {
             frontmatter {
               title
-              list
+              cvImage {
+                childImageSharp {
+                  fluid(maxWidth: 800) {
+                    ...GatsbyImageSharpFluid
+                  }
+                }
+              }
             }
           }
         }
       `}
       render={(data) => (
-        <MDBRow>
+       <MDBRow>
           <figure className="mb-0 gy-4">
             <MDBTypography blockquote>
               <p> {data.markdownRemark.frontmatter.title}</p>
             </MDBTypography>
           </figure>
+
           <MDBRow className="gy-2">
-            {data.markdownRemark.frontmatter.list.map((item) => (
-              <MDBListGroupItem>
-                {" "}<MDBIcon color="primary" fas icon="trophy" />{" "}
-                {item}
-                </MDBListGroupItem>
-            ))}
+            <MDBRipple rippleTag='a'>
+              <img
+                src={data.markdownRemark.frontmatter.cvImage.childImageSharp.fluid.src}
+              />
+            </MDBRipple>
           </MDBRow>
         </MDBRow>
       )}
     />
   );
 };
+
+export default CV;
