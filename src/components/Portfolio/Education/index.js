@@ -1,8 +1,40 @@
-import * as React from "react";
-import { MDBTypography, MDBRow } from "mdb-react-ui-kit";
-import { StaticQuery, graphql } from "gatsby";
+import * as React from 'react';
+import {
+  MDBTypography,
+  MDBRow,
+  MDBListGroupItem,
+  MDBIcon,
+} from 'mdb-react-ui-kit';
+import { StaticQuery, graphql } from 'gatsby';
 
 export const Education = () => {
+  const getIcon = (args) => {
+    if (args.includes('Computer Application')) {
+      return 'graduation-cap';
+    } else if (args.includes('India')) {
+      return 'university';
+    } else if (args.includes(' – ')) {
+      return 'calendar-check';
+    }
+  };
+
+  const degrees = (item) => {
+    const degreeItems = [];
+    let lines = item.split('.');
+    if (lines.length !== 0) {
+      lines.map((words) => {
+        if (words.length !== 0) {
+          degreeItems.push(
+            <MDBListGroupItem>
+              <MDBIcon color="primary" fas icon={getIcon(words)} /> {words}
+            </MDBListGroupItem>
+          );
+        }
+      });
+    }
+    return degreeItems;
+  };
+
   return (
     <StaticQuery
       query={graphql`
@@ -11,13 +43,6 @@ export const Education = () => {
             frontmatter {
               title
               list
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 800) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
             }
           }
         }
@@ -29,14 +54,9 @@ export const Education = () => {
               <p> {data.markdownRemark.frontmatter.title}</p>
             </MDBTypography>
           </figure>
-          {data.markdownRemark.frontmatter.list.map(item=>{
-            let lines = item.split(".");
-            return lines.map(words=>(
-              <MDBTypography className='lead mb-0'>
-                <p  className="text-sm-start"> {words}</p>
-                <hr/>
-              </MDBTypography>))}
-           )}
+          {data.markdownRemark.frontmatter.list.map((item) => (
+            <MDBRow className="gy-2">{degrees(item)}</MDBRow>
+          ))}
         </MDBRow>
       )}
     />

@@ -1,6 +1,5 @@
 ---
 title: "Education"
-image: "../images/education.png"
 list: [
     "(Distance Education) Masters of Computer Application.
     SASTRA Deemed to be University,Thanjavur, India.

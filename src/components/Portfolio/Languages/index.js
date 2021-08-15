@@ -1,24 +1,18 @@
-import * as React from "react";
-import { MDBTypography, MDBRow } from "mdb-react-ui-kit";
-import { ListCard } from "../../UI/ListCard";
-import { StaticQuery, graphql } from "gatsby";
+import * as React from 'react';
+import { MDBTypography, MDBRow } from 'mdb-react-ui-kit';
+import { ListCard } from '../../UI/ListCard';
+import { StaticQuery, graphql } from 'gatsby';
 
 export const Achievements = () => {
   return (
     <StaticQuery
       query={graphql`
         query {
-          markdownRemark(fileAbsolutePath: { regex: "/achievements/" }) {
+          markdownRemark(fileAbsolutePath: { regex: "/language/" }) {
             frontmatter {
               title
-              list
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 800) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
+              languages
+              proficiency
             }
           }
         }

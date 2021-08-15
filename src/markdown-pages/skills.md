@@ -1,6 +1,14 @@
 ---
 pageName: "Skills"
-groups: ["Frontend", "Backend", "DevOps"]
+groups:
+  [
+    "Frontend",
+    "Backend",
+    "DevOps",
+    "Tools",
+    "Methodologies & Databases",
+    "Familiar with",
+  ]
 skills: [
     [
       "HTML5",
@@ -40,6 +48,41 @@ skills: [
       Bucket",
       "Git",
       "Gatling",
+    ],
+    [
+      "Various development IDE (Eclipse, IntelliJ, VS Code)",
+      "Angular CLI",
+      "Postman",
+      "Kube Ctl",
+      "Graylog",
+      "Grafana",
+      "Kafka Queue",
+      "YARN",
+      "NPM",
+    ],
+    [
+      "Agile",
+      "Kanban",
+      "Scrum.",
+      "MongoDB",
+      "MySQL",
+      "Postgre SQL",
+      "Elastic Search",
+      "No SQL Database",
+    ],
+    [
+      "AWS and Azure Cloud Fundamentals",
+      "Deployment procedures",
+      "Chabot’s",
+      "Dialog Flow for Chabot development",
+      "Phone Gap",
+      "Android (Native)",
+      "Kafka",
+      "Cordova",
+      "Basic knowledge of Machine Learning concepts",
+      "Gatsby Js",
+      "Azure DevOps",
+      "Server less functions",
     ],
   ]
 ---

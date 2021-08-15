@@ -1,9 +1,23 @@
-import * as React from "react";
-import { MDBTypography, MDBRow } from "mdb-react-ui-kit";
-import { ListCard } from "../../UI/ListCard";
-import { StaticQuery, graphql } from "gatsby";
+import * as React from 'react';
+import {
+  MDBTypography,
+  MDBRow,
+  MDBListGroupItem,
+  MDBIcon,
+} from 'mdb-react-ui-kit';
+import { StaticQuery, graphql } from 'gatsby';
 
 export const Hobbies = () => {
+  const getIcon = (args) => {
+    switch (args) {
+      case 'Reading':
+        return 'book-open';
+      case 'Storytelling':
+        return 'comments';
+      case 'Travelling':
+        return 'globe';
+    }
+  };
   return (
     <StaticQuery
       query={graphql`
@@ -12,13 +26,6 @@ export const Hobbies = () => {
             frontmatter {
               title
               list
-              image {
-                childImageSharp {
-                  fluid(maxWidth: 800) {
-                    ...GatsbyImageSharpFluid
-                  }
-                }
-              }
             }
           }
         }
@@ -30,14 +37,14 @@ export const Hobbies = () => {
               <p> {data.markdownRemark.frontmatter.title}</p>
             </MDBTypography>
           </figure>
-
-          <ListCard
-            title={data.markdownRemark.frontmatter.title}
-            list={data.markdownRemark.frontmatter.list}
-            image={
-              data.markdownRemark.frontmatter.image.childImageSharp.fluid.src
-            }
-          />
+          <MDBRow className="gy-2">
+            {data.markdownRemark.frontmatter.list.map((item) => (
+              <MDBListGroupItem>
+                {' '}
+                <MDBIcon color="primary" fas icon={getIcon(item)} /> {item}
+              </MDBListGroupItem>
+            ))}
+          </MDBRow>
         </MDBRow>
       )}
     />

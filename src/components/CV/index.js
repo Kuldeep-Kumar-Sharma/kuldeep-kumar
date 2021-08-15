@@ -1,10 +1,19 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   MDBTypography,
   MDBRow,
   MDBRipple,
-} from "mdb-react-ui-kit";
-import { StaticQuery, graphql } from "gatsby";
+  MDBBtn,
+  MDBIcon,
+  MDBTooltip,
+  MDBCard,
+  MDBCardOverlay,
+  MDBCardImage,
+} from 'mdb-react-ui-kit';
+import { StaticQuery, graphql } from 'gatsby';
+import './style.css';
+
+import ResumePDF from './KuldeepResume.pdf';
 
 const CV = () => {
   return (
@@ -16,7 +25,7 @@ const CV = () => {
               title
               cvImage {
                 childImageSharp {
-                  fluid(maxWidth: 800) {
+                  fluid(maxWidth: 8000) {
                     ...GatsbyImageSharpFluid
                   }
                 }
@@ -26,20 +35,37 @@ const CV = () => {
         }
       `}
       render={(data) => (
-       <MDBRow>
+        <MDBRow className="p-3">
           <figure className="mb-0 gy-4">
             <MDBTypography blockquote>
               <p> {data.markdownRemark.frontmatter.title}</p>
             </MDBTypography>
           </figure>
-
-          <MDBRow className="gy-2">
-            <MDBRipple rippleTag='a'>
-              <img
-                src={data.markdownRemark.frontmatter.cvImage.childImageSharp.fluid.src}
-              />
-            </MDBRipple>
-          </MDBRow>
+          <MDBCard className="text-white">
+            <MDBCardImage
+              className="imageScroll"
+              overlay
+              src={
+                data.markdownRemark.frontmatter.cvImage.childImageSharp.fluid
+                  .src
+              }
+              alt="..."
+            />
+            <MDBCardOverlay className="floatButtonContainer">
+              <MDBTooltip placement="auto" tag="a" title="Download Resume!">
+                <a
+                  href={ResumePDF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                >
+                  <MDBBtn className="floatButton" floating size="lg" tag="a">
+                    <MDBIcon fas icon="download" />
+                  </MDBBtn>
+                </a>
+              </MDBTooltip>
+            </MDBCardOverlay>
+          </MDBCard>
         </MDBRow>
       )}
     />
