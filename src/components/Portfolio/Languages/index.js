@@ -1,9 +1,34 @@
 import * as React from 'react';
-import { MDBTypography, MDBRow } from 'mdb-react-ui-kit';
-import { ListCard } from '../../UI/ListCard';
+import {
+  MDBTypography,
+  MDBRow,
+  MDBIcon,
+  MDBListGroupItem,
+} from 'mdb-react-ui-kit';
 import { StaticQuery, graphql } from 'gatsby';
 
-export const Achievements = () => {
+export const Languages = () => {
+  const proficiencyStars = (star) => {
+    const list = [];
+    for (let i = 0; i < star; i++) {
+      list.push(<MDBIcon color="primary" fas icon="star" />);
+    }
+    return list;
+  };
+
+  const proficiency = (languages, stars) => {
+    const list = [];
+    for (let i = 0; i < languages.length; i++) {
+      list.push(
+        <MDBListGroupItem>
+          {' '}
+          <MDBIcon color="primary" fas icon="language" /> {languages[i]}{' '}
+          {proficiencyStars(stars[i])}
+        </MDBListGroupItem>
+      );
+    }
+    return list;
+  };
   return (
     <StaticQuery
       query={graphql`
@@ -11,8 +36,8 @@ export const Achievements = () => {
           markdownRemark(fileAbsolutePath: { regex: "/language/" }) {
             frontmatter {
               title
-              languages
-              proficiency
+              list
+              listStars
             }
           }
         }
@@ -24,14 +49,12 @@ export const Achievements = () => {
               <p> {data.markdownRemark.frontmatter.title}</p>
             </MDBTypography>
           </figure>
-
-          <ListCard
-            title={data.markdownRemark.frontmatter.title}
-            list={data.markdownRemark.frontmatter.list}
-            image={
-              data.markdownRemark.frontmatter.image.childImageSharp.fluid.src
-            }
-          />
+          <MDBRow className="gy-2">
+            {proficiency(
+              data.markdownRemark.frontmatter.list,
+              data.markdownRemark.frontmatter.listStars
+            )}
+          </MDBRow>
         </MDBRow>
       )}
     />

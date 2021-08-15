@@ -1,5 +1,4 @@
 ---
-title: "Hobbies"
-image: "../images/hobbies.png"
-list: ["Reading", "Storytelling", "Travelling"]
+title: 'Hobbies'
+list: ['Reading', 'Storytelling', 'Travelling']
 ---

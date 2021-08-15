@@ -1,5 +1,5 @@
 ---
 title: 'Language Proficiency'
-languages: ['English', 'Hindi', 'German']
-proficiency: [5, 5, 1]
+list: ['English', 'Hindi', 'German']
+listStars: [5, 5, 1]
 ---

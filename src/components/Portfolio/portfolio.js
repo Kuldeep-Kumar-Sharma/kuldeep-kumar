@@ -12,6 +12,7 @@ import {
 import './portfolio.css';
 import { WorkHistory } from './WorkHistory';
 import { Achievements } from './Achievements';
+import { Languages } from './Languages';
 import { Courses } from './Courses';
 import { Education } from './Education';
 import { Hobbies } from './Hobbies';
@@ -148,7 +149,7 @@ export default function Portfolio() {
                 <Hobbies />
               </MDBTabsPane>
               <MDBTabsPane show={fillActive === 'Languages'}>
-                Tab 1 content
+                <Languages />
               </MDBTabsPane>
             </MDBTabsContent>
           </MDBRow>

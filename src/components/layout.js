@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState } from 'react';
 import {
   MDBContainer,
   MDBRow,
@@ -6,13 +6,15 @@ import {
   MDBTypography,
   MDBRipple,
   MDBBtn,
-  MDBIcon
-} from "mdb-react-ui-kit";
-import "./layout.css";
+  MDBIcon,
+} from 'mdb-react-ui-kit';
+import './layout.css';
 
 const Layout = (props) => {
   const { frontmatter } = props.data.allMarkdownRemark.edges[0].node;
   let profileImage = frontmatter.profileImage.childImageSharp.fluid;
+  const [portfolioActive, setPortfolioActiveActive] = useState(false);
+  const [cvActive, setCVActive] = useState(true);
 
   const generateSocialLinks = (socialLinks, socialColours, socialIcons) => {
     let socialButtonComponents = [];
@@ -62,7 +64,7 @@ const Layout = (props) => {
             >
               <div
                 className="text-center p-3"
-                style={{ backgroundColor: "rgba(0, 0, 0, 0.2)" }}
+                style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
               >
                 {generateSocialLinks(
                   frontmatter.socialLinks,
@@ -75,19 +77,28 @@ const Layout = (props) => {
             <MDBCol lg="8" md="8" className="gy-3">
               <MDBBtn
                 block
-                outline
+                outline={portfolioActive}
                 className="text-dark mx-2"
                 color="light"
-                onClick={() => props.switchCopt("PORTFOLIO")}
+                onClick={() => {
+                  props.switchCopt('PORTFOLIO');
+                  setPortfolioActiveActive(false);
+                  setCVActive(true);
+                }}
               >
                 Portfolio
               </MDBBtn>
               <MDBBtn
                 MDBBtn
                 block
+                outline={cvActive}
                 color="light"
                 type="button"
-                onClick={() => props.switchCopt("C.V")}
+                onClick={() => {
+                  props.switchCopt('C.V');
+                  setPortfolioActiveActive(true);
+                  setCVActive(false);
+                }}
                 className="text-dark mx-2 my-2"
               >
                 CV
