@@ -16,6 +16,8 @@ export const Hobbies = () => {
         return 'comments';
       case 'Travelling':
         return 'globe';
+      default:
+        return 'globe';
     }
   };
   return (

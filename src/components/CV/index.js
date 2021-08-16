@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   MDBTypography,
   MDBRow,
-  MDBRipple,
   MDBBtn,
   MDBIcon,
   MDBTooltip,
@@ -15,7 +14,7 @@ import './style.css';
 
 import ResumePDF from './KuldeepResume.pdf';
 
-const CV = () => {
+const Cv = () => {
   return (
     <StaticQuery
       query={graphql`
@@ -72,4 +71,4 @@ const CV = () => {
   );
 };
 
-export default CV;
+export default Cv;

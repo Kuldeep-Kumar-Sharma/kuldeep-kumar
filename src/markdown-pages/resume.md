@@ -1,4 +1,4 @@
 ---
-title: "Curriculum Vitae"
-cvImage: "../images/KuldeepResume.jpg"
+title: 'Curriculum Vitae'
+cvImage: '../images/KuldeepResume.jpg'
 ---

@@ -21,16 +21,14 @@ export const Education = () => {
   const degrees = (item) => {
     const degreeItems = [];
     let lines = item.split('.');
-    if (lines.length !== 0) {
-      lines.map((words) => {
-        if (words.length !== 0) {
-          degreeItems.push(
-            <MDBListGroupItem>
-              <MDBIcon color="primary" fas icon={getIcon(words)} /> {words}
-            </MDBListGroupItem>
-          );
-        }
-      });
+    for (let i = 0; i < lines.length; i++) {
+      if (lines[i] !== '') {
+        degreeItems.push(
+          <MDBListGroupItem>
+            <MDBIcon color="primary" fas icon={getIcon(lines[i])} /> {lines[i]}
+          </MDBListGroupItem>
+        );
+      }
     }
     return degreeItems;
   };
