@@ -1,18 +1,34 @@
-import * as React from "react";
-import { MDBTypography, MDBRow,MDBBadge,MDBIcon,MDBListGroupItem } from "mdb-react-ui-kit";
-import { StaticQuery, graphql } from "gatsby";
+import * as React from 'react';
+import {
+  MDBTypography,
+  MDBRow,
+  MDBBadge,
+  MDBIcon,
+  MDBListGroupItem,
+} from 'mdb-react-ui-kit';
+import { StaticQuery, graphql } from 'gatsby';
 
 export const Skills = () => {
-  const skills = (groups,skills) =>{
-      const listSkills = [];
-      for(let i = 0;i < groups.length;i++){
-        listSkills.push(
-              <MDBListGroupItem>
-                <p className="fw-bold"><MDBIcon color="primary" fas icon="code" />{" "}{groups[i]}{" "}</p>
-                {skills[i].map((skill) => (<MDBBadge className="ms-2">{skill}</MDBBadge>))}
-              </MDBListGroupItem>);
-      }
-     return listSkills;
+  const skills = (groups, skills) => {
+    const listSkills = [];
+    for (let i = 0; i < groups.length; i++) {
+      listSkills.push(
+        <MDBListGroupItem key={i}>
+          <p className="fw-bold">
+            <MDBIcon color="primary" fas icon="code" /> {groups[i]}{' '}
+          </p>
+          {skills[i].map((skill) => (
+            <MDBBadge
+              key={'_' + Math.random().toString(36).substr(2, 9)}
+              className="ms-2"
+            >
+              {skill}
+            </MDBBadge>
+          ))}
+        </MDBListGroupItem>
+      );
+    }
+    return listSkills;
   };
   return (
     <StaticQuery
@@ -35,8 +51,11 @@ export const Skills = () => {
             </MDBTypography>
           </figure>
           <MDBRow className="gy-2">
-            {skills(data.markdownRemark.frontmatter.groups,data.markdownRemark.frontmatter.skills)}
-          </MDBRow>          
+            {skills(
+              data.markdownRemark.frontmatter.groups,
+              data.markdownRemark.frontmatter.skills
+            )}
+          </MDBRow>
         </MDBRow>
       )}
     />

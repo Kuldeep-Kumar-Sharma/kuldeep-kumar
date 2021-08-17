@@ -1,11 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   MDBTypography,
   MDBRow,
   MDBListGroupItem,
   MDBIcon,
-} from "mdb-react-ui-kit";
-import { StaticQuery, graphql } from "gatsby";
+} from 'mdb-react-ui-kit';
+import { StaticQuery, graphql } from 'gatsby';
 
 export const Achievements = () => {
   return (
@@ -29,10 +29,12 @@ export const Achievements = () => {
           </figure>
           <MDBRow className="gy-2">
             {data.markdownRemark.frontmatter.list.map((item) => (
-              <MDBListGroupItem>
-                {" "}<MDBIcon color="primary" fas icon="trophy" />{" "}
-                {item}
-                </MDBListGroupItem>
+              <MDBListGroupItem
+                key={'_' + Math.random().toString(36).substr(2, 9)}
+              >
+                {' '}
+                <MDBIcon color="primary" fas icon="trophy" /> {item}
+              </MDBListGroupItem>
             ))}
           </MDBRow>
         </MDBRow>

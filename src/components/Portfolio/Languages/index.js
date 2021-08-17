@@ -11,7 +11,7 @@ export const Languages = () => {
   const proficiencyStars = (star) => {
     const list = [];
     for (let i = 0; i < star; i++) {
-      list.push(<MDBIcon color="primary" fas icon="star" />);
+      list.push(<MDBIcon key={i} color="primary" fas icon="star" />);
     }
     return list;
   };
@@ -20,7 +20,7 @@ export const Languages = () => {
     const list = [];
     for (let i = 0; i < languages.length; i++) {
       list.push(
-        <MDBListGroupItem>
+        <MDBListGroupItem key={i}>
           {' '}
           <MDBIcon color="primary" fas icon="language" /> {languages[i]}{' '}
           {proficiencyStars(stars[i])}

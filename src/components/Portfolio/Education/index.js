@@ -24,7 +24,7 @@ export const Education = () => {
     for (let i = 0; i < lines.length; i++) {
       if (lines[i] !== '') {
         degreeItems.push(
-          <MDBListGroupItem>
+          <MDBListGroupItem key={i}>
             <MDBIcon color="primary" fas icon={getIcon(lines[i])} /> {lines[i]}
           </MDBListGroupItem>
         );
@@ -53,7 +53,12 @@ export const Education = () => {
             </MDBTypography>
           </figure>
           {data.markdownRemark.frontmatter.list.map((item) => (
-            <MDBRow className="gy-2">{degrees(item)}</MDBRow>
+            <MDBRow
+              key={'_' + Math.random().toString(36).substr(2, 9)}
+              className="gy-2"
+            >
+              {degrees(item)}
+            </MDBRow>
           ))}
         </MDBRow>
       )}

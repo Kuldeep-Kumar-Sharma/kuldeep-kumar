@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import Portfolio from '../components/Portfolio/portfolio';
 import Cv from '../components/CV';
-// markup
+
 const IndexPage = ({ data }) => {
   const [routeName, setRouteName] = useState(<Portfolio />);
   const switchComponent = (switchcomponent) => {

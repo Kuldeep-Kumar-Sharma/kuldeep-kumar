@@ -17,7 +17,7 @@ export const WorkHistory = (props) => {
     let workHistoryList = [];
     for (let i = 0; i < numberOfWorkHistory; i++) {
       workHistoryList.push(
-        <MDBListGroupItem>
+        <MDBListGroupItem key={i}>
           <p className="fw-bold">
             {' '}
             <MDBIcon fas icon="briefcase" color="primary" /> {client[i]}

@@ -41,7 +41,9 @@ export const Hobbies = () => {
           </figure>
           <MDBRow className="gy-2">
             {data.markdownRemark.frontmatter.list.map((item) => (
-              <MDBListGroupItem>
+              <MDBListGroupItem
+                key={'_' + Math.random().toString(36).substr(2, 9)}
+              >
                 {' '}
                 <MDBIcon color="primary" fas icon={getIcon(item)} /> {item}
               </MDBListGroupItem>

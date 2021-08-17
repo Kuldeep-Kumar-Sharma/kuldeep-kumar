@@ -59,7 +59,7 @@ const Layout = (props) => {
             <MDBCol
               lg="12"
               md="12"
-              backgroundColor="light"
+              backgroundcolor="light"
               className="text-center text-lg-left"
             >
               <div
@@ -89,7 +89,6 @@ const Layout = (props) => {
                 Portfolio
               </MDBBtn>
               <MDBBtn
-                MDBBtn
                 block
                 outline={cvActive}
                 color="light"

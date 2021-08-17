@@ -1,11 +1,11 @@
-import * as React from "react";
+import * as React from 'react';
 import {
   MDBTypography,
   MDBRow,
   MDBListGroupItem,
   MDBIcon,
-} from "mdb-react-ui-kit";
-import { StaticQuery, graphql } from "gatsby";
+} from 'mdb-react-ui-kit';
+import { StaticQuery, graphql } from 'gatsby';
 
 export const Courses = () => {
   return (
@@ -21,7 +21,7 @@ export const Courses = () => {
         }
       `}
       render={(data) => (
-       <MDBRow>
+        <MDBRow>
           <figure className="mb-0 gy-4">
             <MDBTypography blockquote>
               <p> {data.markdownRemark.frontmatter.title}</p>
@@ -30,9 +30,11 @@ export const Courses = () => {
 
           <MDBRow className="gy-2">
             {data.markdownRemark.frontmatter.list.map((item) => (
-              <MDBListGroupItem>
-                {" "}<MDBIcon color="primary" fas icon="certificate" />{" "}
-                {item}
+              <MDBListGroupItem
+                key={'_' + Math.random().toString(36).substr(2, 9)}
+              >
+                {' '}
+                <MDBIcon color="primary" fas icon="certificate" /> {item}
               </MDBListGroupItem>
             ))}
           </MDBRow>
