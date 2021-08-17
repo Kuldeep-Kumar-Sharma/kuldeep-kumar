@@ -10,7 +10,7 @@ import {
   MDBCardImage,
 } from 'mdb-react-ui-kit';
 import { StaticQuery, graphql } from 'gatsby';
-import './style.css';
+import './cv.css';
 
 import ResumePDF from './KuldeepResume.pdf';
 
