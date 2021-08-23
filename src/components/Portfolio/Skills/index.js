@@ -5,7 +5,9 @@ import {
   MDBBadge,
   MDBIcon,
   MDBListGroupItem,
-} from 'mdb-react-ui-kit';
+  MDBBox,
+  MDBListGroup,
+} from 'mdbreact';
 import { StaticQuery, graphql } from 'gatsby';
 
 export const Skills = () => {
@@ -20,7 +22,8 @@ export const Skills = () => {
           {skills[i].map((skill) => (
             <MDBBadge
               key={'_' + Math.random().toString(36).substr(2, 9)}
-              className="ms-2"
+              className="ml-1"
+              color="primary"
             >
               {skill}
             </MDBBadge>
@@ -44,18 +47,20 @@ export const Skills = () => {
         }
       `}
       render={(data) => (
-        <MDBRow>
-          <figure className="mb-0 gy-4">
-            <MDBTypography blockquote>
-              <p> {data.markdownRemark.frontmatter.pageName}</p>
-            </MDBTypography>
-          </figure>
-          <MDBRow className="gy-2">
-            {skills(
-              data.markdownRemark.frontmatter.groups,
-              data.markdownRemark.frontmatter.skills
-            )}
-          </MDBRow>
+        <MDBRow className="ml-1">
+          <MDBTypography blockquote bqColor="primary">
+            <MDBBox tag="p" mb={0} className="bq-title">
+              {data.markdownRemark.frontmatter.pageName}
+            </MDBBox>
+            <MDBRow className="mt-2 ml-2">
+              <MDBListGroup>
+                {skills(
+                  data.markdownRemark.frontmatter.groups,
+                  data.markdownRemark.frontmatter.skills
+                )}
+              </MDBListGroup>
+            </MDBRow>
+          </MDBTypography>
         </MDBRow>
       )}
     />

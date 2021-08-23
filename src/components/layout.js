@@ -4,10 +4,10 @@ import {
   MDBRow,
   MDBCol,
   MDBTypography,
-  MDBRipple,
   MDBBtn,
   MDBIcon,
-} from 'mdb-react-ui-kit';
+} from 'mdbreact';
+import Img from 'gatsby-image';
 import './layout.css';
 
 const Layout = (props) => {
@@ -21,16 +21,16 @@ const Layout = (props) => {
     for (let i = 0; i < socialLinks.length; i++) {
       socialButtonComponents.push(
         <MDBBtn
-          floating
+          className="float"
+          color={socialColours[i]}
           key={i}
-          className="m-1"
-          style={{ backgroundColor: socialColours[i] }}
           href={socialLinks[i]}
         >
           <MDBIcon fab icon={socialIcons[i]} />
         </MDBBtn>
       );
     }
+
     return socialButtonComponents;
   };
   return (
@@ -38,16 +38,14 @@ const Layout = (props) => {
       <MDBRow className="h-100">
         <MDBCol md="4" lg="3" className="overflow-hidden  BgNav h-100">
           <MDBRow className="d-flex justify-content-center">
-            <MDBCol lg="8" md="8" className="gy-5 mb-4">
-              <MDBRipple rippleTag="a">
-                <img
-                  src={profileImage.src}
-                  className="img-fluid rounded"
-                  alt=""
-                />
-              </MDBRipple>
+            <MDBCol lg="8" md="8" className="mb-4">
+              <Img
+                fixed={profileImage}
+                className="img-profile rounded mx-auto d-block"
+                alt=""
+              />
             </MDBCol>
-            <figure className="text-center mb-0">
+            <figure className="text-center mt-1">
               <MDBTypography colorText="light" variant="h5">
                 {frontmatter.name}
               </MDBTypography>
@@ -74,7 +72,7 @@ const Layout = (props) => {
               </div>
             </MDBCol>
 
-            <MDBCol lg="8" md="8" className="gy-3">
+            <MDBCol lg="8" md="8" className="mt-2">
               <MDBBtn
                 block
                 outline={portfolioActive}
@@ -105,8 +103,8 @@ const Layout = (props) => {
             </MDBCol>
           </MDBRow>
         </MDBCol>
-        <MDBCol className="h-100 overflow-scroll" lg="9" md="8">
-          <MDBContainer className=" h-100">{props.children}</MDBContainer>
+        <MDBCol className="mh-100 overflow-auto" lg="9" md="8">
+          <MDBContainer className="mh-100 ">{props.children}</MDBContainer>
         </MDBCol>
       </MDBRow>
     </MDBContainer>

@@ -1,10 +1,14 @@
-import * as React from 'react';
+import React from 'react';
 import {
   MDBTypography,
   MDBRow,
   MDBListGroupItem,
+  MDBListGroup,
   MDBIcon,
-} from 'mdb-react-ui-kit';
+  MDBBox,
+  MDBContainer,
+  MDBCol,
+} from 'mdbreact';
 import { StaticQuery, graphql } from 'gatsby';
 
 export const Hobbies = () => {
@@ -33,23 +37,34 @@ export const Hobbies = () => {
         }
       `}
       render={(data) => (
-        <MDBRow>
-          <figure className="mb-0 gy-4">
-            <MDBTypography blockquote>
-              <p> {data.markdownRemark.frontmatter.title}</p>
-            </MDBTypography>
-          </figure>
-          <MDBRow className="gy-2">
-            {data.markdownRemark.frontmatter.list.map((item) => (
-              <MDBListGroupItem
-                key={'_' + Math.random().toString(36).substr(2, 9)}
-              >
-                {' '}
-                <MDBIcon color="primary" fas icon={getIcon(item)} /> {item}
-              </MDBListGroupItem>
-            ))}
+        <MDBContainer className="ml-1">
+          <MDBRow>
+            <MDBCol md="10">
+              <MDBTypography blockquote bqColor="primary">
+                <MDBBox tag="p" mb={0} className="bq-title">
+                  {data.markdownRemark.frontmatter.title}
+                </MDBBox>
+                <MDBRow className="mt-2 ml-2">
+                  <MDBListGroup style={{ width: '22rem' }}>
+                    {data.markdownRemark.frontmatter.list.map((item) => (
+                      <MDBListGroupItem
+                        key={'_' + Math.random().toString(36).substr(2, 9)}
+                      >
+                        {' '}
+                        <MDBIcon
+                          color="primary"
+                          fas
+                          icon={getIcon(item)}
+                        />{' '}
+                        {item}
+                      </MDBListGroupItem>
+                    ))}
+                  </MDBListGroup>
+                </MDBRow>
+              </MDBTypography>
+            </MDBCol>
           </MDBRow>
-        </MDBRow>
+        </MDBContainer>
       )}
     />
   );

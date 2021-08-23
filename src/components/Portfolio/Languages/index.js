@@ -4,7 +4,9 @@ import {
   MDBRow,
   MDBIcon,
   MDBListGroupItem,
-} from 'mdb-react-ui-kit';
+  MDBBox,
+  MDBListGroup,
+} from 'mdbreact';
 import { StaticQuery, graphql } from 'gatsby';
 
 export const Languages = () => {
@@ -43,18 +45,20 @@ export const Languages = () => {
         }
       `}
       render={(data) => (
-        <MDBRow>
-          <figure className="mb-0 gy-4">
-            <MDBTypography blockquote>
-              <p> {data.markdownRemark.frontmatter.title}</p>
-            </MDBTypography>
-          </figure>
-          <MDBRow className="gy-2">
-            {proficiency(
-              data.markdownRemark.frontmatter.list,
-              data.markdownRemark.frontmatter.listStars
-            )}
-          </MDBRow>
+        <MDBRow className="ml-1">
+          <MDBTypography blockquote bqColor="primary">
+            <MDBBox tag="p" mb={0} className="bq-title">
+              {data.markdownRemark.frontmatter.title}
+            </MDBBox>
+            <MDBRow className="mt-2 ml-2">
+              <MDBListGroup style={{ width: '22rem' }}>
+                {proficiency(
+                  data.markdownRemark.frontmatter.list,
+                  data.markdownRemark.frontmatter.listStars
+                )}
+              </MDBListGroup>
+            </MDBRow>
+          </MDBTypography>
         </MDBRow>
       )}
     />

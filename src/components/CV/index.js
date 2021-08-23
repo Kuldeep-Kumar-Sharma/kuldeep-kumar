@@ -4,11 +4,9 @@ import {
   MDBRow,
   MDBBtn,
   MDBIcon,
-  MDBTooltip,
-  MDBCard,
-  MDBCardOverlay,
   MDBCardImage,
-} from 'mdb-react-ui-kit';
+  MDBBox,
+} from 'mdbreact';
 import { StaticQuery, graphql } from 'gatsby';
 import './cv.css';
 
@@ -34,37 +32,32 @@ const Cv = () => {
         }
       `}
       render={(data) => (
-        <MDBRow className="p-3">
-          <figure className="mb-0 gy-4">
-            <MDBTypography blockquote>
-              <p> {data.markdownRemark.frontmatter.title}</p>
-            </MDBTypography>
-          </figure>
-          <MDBCard className="text-white">
-            <MDBCardImage
-              className="imageScroll"
-              overlay
-              src={
-                data.markdownRemark.frontmatter.cvImage.childImageSharp.fluid
-                  .src
-              }
-              alt="..."
-            />
-            <MDBCardOverlay className="floatButtonContainer">
-              <MDBTooltip placement="auto" tag="a" title="Download Resume!">
-                <a
-                  href={ResumePDF}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  download
-                >
-                  <MDBBtn className="floatButton" floating size="lg" tag="a">
-                    <MDBIcon fas icon="download" />
-                  </MDBBtn>
-                </a>
-              </MDBTooltip>
-            </MDBCardOverlay>
-          </MDBCard>
+        <MDBRow className="ml-1">
+          <MDBTypography blockquote bqColor="primary">
+            <MDBBox tag="p" mb={0} className="bq-title">
+              {data.markdownRemark.frontmatter.title}
+            </MDBBox>
+            <MDBRow className="mt-2 ml-2 floatButtonContainer">
+              <MDBCardImage
+                className="mw-100"
+                src={
+                  data.markdownRemark.frontmatter.cvImage.childImageSharp.fluid
+                    .src
+                }
+                alt="..."
+              ></MDBCardImage>
+              <a
+                href={ResumePDF}
+                target="_blank"
+                rel="noopener noreferrer"
+                download
+              >
+                <MDBBtn className="floatButton" floating size="lg" tag="a">
+                  <MDBIcon fas icon="download" />
+                </MDBBtn>
+              </a>
+            </MDBRow>
+          </MDBTypography>
         </MDBRow>
       )}
     />

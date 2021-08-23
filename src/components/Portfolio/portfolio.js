@@ -3,12 +3,13 @@ import {
   MDBTypography,
   MDBRow,
   MDBContainer,
-  MDBTabs,
-  MDBTabsItem,
-  MDBTabsLink,
-  MDBTabsContent,
-  MDBTabsPane,
-} from 'mdb-react-ui-kit';
+  MDBTabPane,
+  MDBTabContent,
+  MDBNav,
+  MDBNavItem,
+  MDBNavLink,
+  MDBBox,
+} from 'mdbreact';
 import './portfolio.css';
 import { WorkHistory } from './WorkHistory';
 import { Achievements } from './Achievements';
@@ -17,18 +18,16 @@ import { Courses } from './Courses';
 import { Education } from './Education';
 import { Hobbies } from './Hobbies';
 import { Skills } from './Skills';
+import { BrowserRouter } from 'react-router-dom';
 import { StaticQuery, graphql } from 'gatsby';
 
 export default function Portfolio() {
-  const [fillActive, setFillActive] = useState('WorkHistory');
-
-  const handleFillClick = (value) => {
-    if (value === fillActive) {
-      return;
+  const [activeItem, setActiveItem] = useState('WorkHistory');
+  const toggle = (tab) => (e) => {
+    if (activeItem !== tab) {
+      setActiveItem(tab);
     }
-    setFillActive(value);
   };
-
   return (
     <StaticQuery
       query={graphql`
@@ -51,107 +50,139 @@ export default function Portfolio() {
       render={(data) => (
         <MDBContainer fluid>
           <MDBRow>
-            <MDBTabs fill className="mb-3">
-              <MDBTabsItem>
-                <MDBTabsLink
-                  onClick={() => handleFillClick('WorkHistory')}
-                  active={fillActive === 'WorkHistory'}
-                >
-                  Work History
-                </MDBTabsLink>
-              </MDBTabsItem>
-              <MDBTabsItem>
-                <MDBTabsLink
-                  onClick={() => handleFillClick('Skills')}
-                  active={fillActive === 'Skills'}
-                >
-                  Skills
-                </MDBTabsLink>
-              </MDBTabsItem>
-              <MDBTabsItem>
-                <MDBTabsLink
-                  onClick={() => handleFillClick('Achievements')}
-                  active={fillActive === 'Achievements'}
-                >
-                  Achievements
-                </MDBTabsLink>
-              </MDBTabsItem>
-              <MDBTabsItem>
-                <MDBTabsLink
-                  onClick={() => handleFillClick('Courses')}
-                  active={fillActive === 'Courses'}
-                >
-                  Courses
-                </MDBTabsLink>
-              </MDBTabsItem>
-              <MDBTabsItem>
-                <MDBTabsLink
-                  onClick={() => handleFillClick('Education')}
-                  active={fillActive === 'Education'}
-                >
-                  Education
-                </MDBTabsLink>
-              </MDBTabsItem>
-              <MDBTabsItem>
-                <MDBTabsLink
-                  onClick={() => handleFillClick('Hobbies')}
-                  active={fillActive === 'Hobbies'}
-                >
-                  Hobbies
-                </MDBTabsLink>
-              </MDBTabsItem>
-              <MDBTabsItem>
-                <MDBTabsLink
-                  onClick={() => handleFillClick('Languages')}
-                  active={fillActive === 'Languages'}
-                >
-                  Languages
-                </MDBTabsLink>
-              </MDBTabsItem>
-            </MDBTabs>
+            <BrowserRouter>
+              <MDBNav className="nav-tabs mt-5">
+                <MDBNavItem>
+                  <MDBNavLink
+                    link
+                    to="#"
+                    active={activeItem === 'WorkHistory'}
+                    onClick={toggle('WorkHistory')}
+                    role="tab"
+                  >
+                    Work History
+                  </MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <MDBNavLink
+                    link
+                    to="#"
+                    active={activeItem === 'Skills'}
+                    role="tab"
+                    onClick={toggle('Skills')}
+                  >
+                    Skills
+                  </MDBNavLink>
+                </MDBNavItem>
+                <MDBNavItem>
+                  <MDBNavLink
+                    link
+                    to="#"
+                    active={activeItem === 'Achievements'}
+                    role="tab"
+                    onClick={toggle('Achievements')}
+                  >
+                    Achievements
+                  </MDBNavLink>
+                </MDBNavItem>
 
-            <MDBTabsContent>
-              <MDBTabsPane show={fillActive === 'WorkHistory'}>
-                <figure className="mb-0 gy-4">
-                  <MDBTypography blockquote>
-                    <p> {data.markdownRemark.frontmatter.currentRole}</p>
+                <MDBNavItem>
+                  <MDBNavLink
+                    link
+                    to="#"
+                    active={activeItem === 'Courses'}
+                    role="tab"
+                    onClick={toggle('Courses')}
+                  >
+                    Courses
+                  </MDBNavLink>
+                </MDBNavItem>
+
+                <MDBNavItem>
+                  <MDBNavLink
+                    link
+                    to="#"
+                    active={activeItem === 'Education'}
+                    role="tab"
+                    onClick={toggle('Education')}
+                  >
+                    Education
+                  </MDBNavLink>
+                </MDBNavItem>
+
+                <MDBNavItem>
+                  <MDBNavLink
+                    link
+                    to="#"
+                    active={activeItem === 'Hobbies'}
+                    role="tab"
+                    onClick={toggle('Hobbies')}
+                  >
+                    Hobbies
+                  </MDBNavLink>
+                </MDBNavItem>
+
+                <MDBNavItem>
+                  <MDBNavLink
+                    link
+                    to="#"
+                    active={activeItem === 'Languages'}
+                    role="tab"
+                    onClick={toggle('Languages')}
+                  >
+                    Languages
+                  </MDBNavLink>
+                </MDBNavItem>
+              </MDBNav>
+            </BrowserRouter>
+
+            <MDBTabContent activeItem={activeItem}>
+              <MDBTabPane tabId="WorkHistory" role="tabpanel">
+                <MDBRow className="ml-1">
+                  <MDBTypography blockquote bqColor="primary">
+                    <MDBBox tag="p" mb={0} className="bq-title">
+                      {data.markdownRemark.frontmatter.currentRole}
+                    </MDBBox>
+                    <hr />
+                    <figcaption className="blockquote-footer mb-0">
+                      <cite title="Source Title">
+                        {data.markdownRemark.frontmatter.currentEmployer}
+                      </cite>
+                    </figcaption>
+                    <WorkHistory
+                      discription={data.markdownRemark.frontmatter.discriptions}
+                      rolePerformed={
+                        data.markdownRemark.frontmatter.rolesPerformed
+                      }
+                      time={data.markdownRemark.frontmatter.times}
+                      client={data.markdownRemark.frontmatter.clients}
+                      numberOfWorkHistory={
+                        data.markdownRemark.frontmatter.numberOfWorkHistory
+                      }
+                    />
                   </MDBTypography>
-                  <hr />
-                  <figcaption className="blockquote-footer mb-0">
-                    <cite title="Source Title">
-                      {data.markdownRemark.frontmatter.currentEmployer}
-                    </cite>
-                  </figcaption>
-                </figure>
-                <WorkHistory
-                  discription={data.markdownRemark.frontmatter.discriptions}
-                  rolePerformed={data.markdownRemark.frontmatter.rolesPerformed}
-                  time={data.markdownRemark.frontmatter.times}
-                  client={data.markdownRemark.frontmatter.clients}
-                  numberOfWorkHistory={
-                    data.markdownRemark.frontmatter.numberOfWorkHistory
-                  }
-                />
-              </MDBTabsPane>
-              <MDBTabsPane show={fillActive === 'Skills'}>
+                </MDBRow>
+              </MDBTabPane>
+
+              <MDBTabPane tabId="Skills" role="tabpanel">
                 <Skills />
-              </MDBTabsPane>
-              <MDBTabsPane show={fillActive === 'Achievements'}>
+              </MDBTabPane>
+              <MDBTabPane tabId="Achievements" role="tabpanel">
                 <Achievements />
-              </MDBTabsPane>
-              <MDBTabsPane show={fillActive === 'Courses'}>
+              </MDBTabPane>
+              <MDBTabPane tabId="Courses" role="tabpanel">
                 <Courses />
-              </MDBTabsPane>
-              <MDBTabsPane show={fillActive === 'Education'}>
+              </MDBTabPane>
+              <MDBTabPane tabId="Education" role="tabpanel">
                 <Education />
-              </MDBTabsPane>
-              <MDBTabsPane show={fillActive === 'Hobbies'}>
+              </MDBTabPane>
+              <MDBTabPane tabId="Hobbies" role="tabpanel">
                 <Hobbies />
-              </MDBTabsPane>
-              <MDBTabsPane show={fillActive === 'Languages'}>
+              </MDBTabPane>
+              <MDBTabPane tabId="Languages" role="tabpanel">
                 <Languages />
-              </MDBTabsPane>
-            </MDBTabsContent>
+              </MDBTabPane>
+            </MDBTabContent>
           </MDBRow>
         </MDBContainer>
       )}

@@ -4,7 +4,9 @@ import {
   MDBRow,
   MDBListGroupItem,
   MDBIcon,
-} from 'mdb-react-ui-kit';
+  MDBBox,
+  MDBListGroup,
+} from 'mdbreact';
 import { StaticQuery, graphql } from 'gatsby';
 
 export const Education = () => {
@@ -25,7 +27,8 @@ export const Education = () => {
       if (lines[i] !== '') {
         degreeItems.push(
           <MDBListGroupItem key={i}>
-            <MDBIcon color="primary" fas icon={getIcon(lines[i])} /> {lines[i]}
+            <MDBIcon color="primary" fas icon={getIcon(lines[i])} />{' '}
+            {lines[i].trim()}
           </MDBListGroupItem>
         );
       }
@@ -46,20 +49,24 @@ export const Education = () => {
         }
       `}
       render={(data) => (
-        <MDBRow>
-          <figure className="mb-0 gy-4">
-            <MDBTypography blockquote>
-              <p> {data.markdownRemark.frontmatter.title}</p>
-            </MDBTypography>
-          </figure>
-          {data.markdownRemark.frontmatter.list.map((item) => (
-            <MDBRow
-              key={'_' + Math.random().toString(36).substr(2, 9)}
-              className="gy-2"
-            >
-              {degrees(item)}
+        <MDBRow className="ml-1">
+          <MDBTypography blockquote bqColor="primary">
+            <MDBBox tag="p" mb={0} className="bq-title">
+              {data.markdownRemark.frontmatter.title}
+            </MDBBox>
+            <MDBRow className="mt-2 ml-2">
+              <MDBListGroup>
+                {data.markdownRemark.frontmatter.list.map((item) => (
+                  <MDBListGroupItem
+                    key={'_' + Math.random().toString(36).substr(2, 9)}
+                    className="gy-2"
+                  >
+                    {degrees(item)}
+                  </MDBListGroupItem>
+                ))}
+              </MDBListGroup>
             </MDBRow>
-          ))}
+          </MDBTypography>
         </MDBRow>
       )}
     />

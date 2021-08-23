@@ -1,10 +1,5 @@
 import * as React from 'react';
-import {
-  MDBListGroup,
-  MDBRow,
-  MDBIcon,
-  MDBListGroupItem,
-} from 'mdb-react-ui-kit';
+import { MDBListGroup, MDBRow, MDBIcon, MDBListGroupItem } from 'mdbreact';
 
 export const WorkHistory = (props) => {
   const items = (
@@ -32,16 +27,14 @@ export const WorkHistory = (props) => {
   };
 
   return (
-    <MDBRow className="gy-2">
-      <MDBListGroup flush>
-        {items(
-          props.client,
-          props.time,
-          props.rolePerformed,
-          props.discription,
-          props.numberOfWorkHistory
-        )}
-      </MDBListGroup>
+    <MDBRow className="mt-2 ml-2">
+      {items(
+        props.client,
+        props.time,
+        props.rolePerformed,
+        props.discription,
+        props.numberOfWorkHistory
+      )}
     </MDBRow>
   );
 };

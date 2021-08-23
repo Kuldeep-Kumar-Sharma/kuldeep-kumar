@@ -10,7 +10,7 @@
     #0072ff,
     #00c6ff
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  justify-content: "center";
+  justify-content: 'center';
 }
 
 .Button {
@@ -37,4 +37,22 @@
   position: fixed;
   bottom: 0%;
   background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+.float {
+  width: 2.8125rem;
+  height: 2.8125rem;
+  font: 400 13.3333px Arial;
+  cursor: pointer;
+  color: #fff;
+  border-radius: 50%;
+  padding: 0;
+  padding-top: 15px;
+}
+
+.img-profile {
+  width: 200px;
+  height: 200px;
+  align-self: center;
+  margin-top: 20px;
 }
