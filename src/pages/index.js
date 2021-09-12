@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
-import { graphql } from 'gatsby';
-import Layout from '../components/layout';
-import Portfolio from '../components/Portfolio/portfolio';
-import Cv from '../components/CV';
+import React, { useState } from "react";
+import Layout from "../components/layout";
+import Portfolio from "../components/Portfolio/portfolio";
+import Cv from "../components/CV";
 
-const IndexPage = ({ data }) => {
+const IndexPage = () => {
   const [routeName, setRouteName] = useState(<Portfolio />);
   const switchComponent = (switchcomponent) => {
-    console.log(switchcomponent);
     switch (switchcomponent) {
-      case 'PORTFOLIO':
-        setRouteName(<Portfolio />);
+      case "PORTFOLIO":
+         setRouteName(<Portfolio />);
         break;
-      case 'C.V':
+      case "C.V":
         setRouteName(<Cv />);
         break;
       default:
@@ -20,38 +18,10 @@ const IndexPage = ({ data }) => {
     }
   };
   return (
-    <Layout data={data} switchCopt={switchComponent}>
+    <Layout switchCopt={switchComponent}>
       {routeName}
     </Layout>
   );
 };
 
-export const pageQuery = graphql`
-  query {
-    allMarkdownRemark(filter: { fileAbsolutePath: { regex: "/profile/" } }) {
-      edges {
-        node {
-          frontmatter {
-            title
-            path
-            name
-            role
-            date(formatString: "DD MMMM YYYY")
-            socialLinks
-            socialIcons
-            socialColours
-            profileImage {
-              childImageSharp {
-                fluid(maxWidth: 800) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-          html
-        }
-      }
-    }
-  }
-`;
 export default IndexPage;

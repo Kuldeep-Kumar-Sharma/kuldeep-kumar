@@ -36,16 +36,6 @@ const Cv = () => {
           <MDBTypography blockquote bqColor="primary">
             <MDBBox tag="p" mb={0} className="bq-title">
               {data.markdownRemark.frontmatter.title}
-            </MDBBox>
-            <MDBRow className="mt-2 ml-2 floatButtonContainer">
-              <MDBCardImage
-                className="mw-100"
-                src={
-                  data.markdownRemark.frontmatter.cvImage.childImageSharp.fluid
-                    .src
-                }
-                alt="..."
-              ></MDBCardImage>
               <a
                 href={ResumePDF}
                 target="_blank"
@@ -56,6 +46,16 @@ const Cv = () => {
                   <MDBIcon fas icon="download" />
                 </MDBBtn>
               </a>
+            </MDBBox>
+            <MDBRow className="mt-2 ml-2 floatButtonContainer">
+              <MDBCardImage
+                className="mw-100"
+                src={
+                  data.markdownRemark.frontmatter.cvImage.childImageSharp.fluid
+                    .src
+                }
+                alt="..."
+              ></MDBCardImage>
             </MDBRow>
           </MDBTypography>
         </MDBRow>

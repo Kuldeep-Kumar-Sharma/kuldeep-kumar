@@ -1,17 +1,3 @@
-.floatButtonContainer {
-  display: flex;
-  flex-wrap: wrap-reverse;
-  flex-direction: row-reverse;
-}
 .floatButton {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  bottom: 40px;
-  right: 40px;
-  background-color: #0c9;
-  color: #fff;
-  border-radius: 50px;
-  text-align: center;
-  box-shadow: 2px 2px 3px #999;
+float: right;
 }

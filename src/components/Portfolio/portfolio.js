@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   MDBTypography,
   MDBRow,
@@ -7,24 +7,24 @@ import {
   MDBTabContent,
   MDBNav,
   MDBNavItem,
-  MDBNavLink,
   MDBBox,
-} from 'mdbreact';
-import './portfolio.css';
-import { WorkHistory } from './WorkHistory';
-import { Achievements } from './Achievements';
-import { Languages } from './Languages';
-import { Courses } from './Courses';
-import { Education } from './Education';
-import { Hobbies } from './Hobbies';
-import { Skills } from './Skills';
-import { BrowserRouter } from 'react-router-dom';
-import { StaticQuery, graphql } from 'gatsby';
+  MDBBtn,
+} from "mdbreact";
+import "./portfolio.css";
+import { WorkHistory } from "./WorkHistory";
+import { Achievements } from "./Achievements";
+import { Languages } from "./Languages";
+import { Courses } from "./Courses";
+import { Education } from "./Education";
+import { Hobbies } from "./Hobbies";
+import { Skills } from "./Skills";
+import { StaticQuery, graphql } from "gatsby";
 
 export default function Portfolio() {
-  const [activeItem, setActiveItem] = useState('WorkHistory');
-  const toggle = (tab) => (e) => {
+  const [activeItem, setActiveItem] = useState("WorkHistory");
+  const toggle = (tab) => {
     if (activeItem !== tab) {
+      console.log(activeItem);
       setActiveItem(tab);
     }
   };
@@ -50,91 +50,61 @@ export default function Portfolio() {
       render={(data) => (
         <MDBContainer fluid>
           <MDBRow>
-            <BrowserRouter>
-              <MDBNav className="nav-tabs mt-5">
-                <MDBNavItem>
-                  <MDBNavLink
-                    link
-                    to="#"
-                    active={activeItem === 'WorkHistory'}
-                    onClick={toggle('WorkHistory')}
-                    role="tab"
-                  >
-                    Work History
-                  </MDBNavLink>
-                </MDBNavItem>
-                <MDBNavItem>
-                  <MDBNavLink
-                    link
-                    to="#"
-                    active={activeItem === 'Skills'}
-                    role="tab"
-                    onClick={toggle('Skills')}
-                  >
-                    Skills
-                  </MDBNavLink>
-                </MDBNavItem>
-                <MDBNavItem>
-                  <MDBNavLink
-                    link
-                    to="#"
-                    active={activeItem === 'Achievements'}
-                    role="tab"
-                    onClick={toggle('Achievements')}
-                  >
-                    Achievements
-                  </MDBNavLink>
-                </MDBNavItem>
+            <MDBNav className="nav-tabs mt-5">
+              <MDBBtn
+                color="primary"
+                outline={activeItem !== "WorkHistory"}
+                onClick={() => toggle("WorkHistory")}
+              >
+                Work History
+              </MDBBtn>
+              <MDBBtn
+                color="primary"
+                outline={activeItem !== "Skills"}
+                onClick={() => toggle("Skills")}
+              >
+                Skills
+              </MDBBtn>
+              <MDBBtn
+                color="primary"
+                outline={activeItem !== "Achievements"}
+                onClick={() => toggle("Achievements")}
+              >
+                Achievements
+              </MDBBtn>
 
-                <MDBNavItem>
-                  <MDBNavLink
-                    link
-                    to="#"
-                    active={activeItem === 'Courses'}
-                    role="tab"
-                    onClick={toggle('Courses')}
-                  >
-                    Courses
-                  </MDBNavLink>
-                </MDBNavItem>
+              <MDBBtn
+                color="primary"
+                outline={activeItem !== "Courses"}
+                onClick={() => toggle("Courses")}
+              >
+                Courses
+              </MDBBtn>
 
-                <MDBNavItem>
-                  <MDBNavLink
-                    link
-                    to="#"
-                    active={activeItem === 'Education'}
-                    role="tab"
-                    onClick={toggle('Education')}
-                  >
-                    Education
-                  </MDBNavLink>
-                </MDBNavItem>
+              <MDBBtn
+                color="primary"
+                outline={activeItem !== "Education"}
+                onClick={() => toggle("Education")}
+              >
+                Education
+              </MDBBtn>
 
-                <MDBNavItem>
-                  <MDBNavLink
-                    link
-                    to="#"
-                    active={activeItem === 'Hobbies'}
-                    role="tab"
-                    onClick={toggle('Hobbies')}
-                  >
-                    Hobbies
-                  </MDBNavLink>
-                </MDBNavItem>
+              <MDBBtn
+                color="primary"
+                outline={activeItem !== "Hobbies"}
+                onClick={() => toggle("Hobbies")}
+              >
+                Hobbies
+              </MDBBtn>
 
-                <MDBNavItem>
-                  <MDBNavLink
-                    link
-                    to="#"
-                    active={activeItem === 'Languages'}
-                    role="tab"
-                    onClick={toggle('Languages')}
-                  >
-                    Languages
-                  </MDBNavLink>
-                </MDBNavItem>
-              </MDBNav>
-            </BrowserRouter>
+              <MDBBtn
+                color="primary"
+                outline={activeItem !== "Languages"}
+                onClick={() => toggle("Languages")}
+              >
+                Languages
+              </MDBBtn>
+            </MDBNav>
 
             <MDBTabContent activeItem={activeItem}>
               <MDBTabPane tabId="WorkHistory" role="tabpanel">
