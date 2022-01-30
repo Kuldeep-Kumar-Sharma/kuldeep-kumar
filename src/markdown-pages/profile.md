@@ -10,7 +10,7 @@ socialLinks:
     'https://www.linkedin.com/in/kuldeep-kumar-9a127676/',
     'https://stackoverflow.com/users/7618720/kuldeep-kumar',
     'https://github.com/Kuldeep-Kumar-Sharma',
-    '+91 9762178238',
+    'https://wa.me/+919762178238',
   ]
 socialColours: ['primary', 'amber', 'elegant', 'dark-green']
 ---

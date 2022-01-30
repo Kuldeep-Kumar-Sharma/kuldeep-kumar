@@ -6,7 +6,6 @@ import {
   MDBTabPane,
   MDBTabContent,
   MDBNav,
-  MDBNavItem,
   MDBBox,
   MDBBtn,
 } from "mdbreact";
